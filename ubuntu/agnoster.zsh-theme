@@ -79,7 +79,7 @@ prompt_end() {
   else
     echo -n "%{%k%}"
   fi
-  echo -n "\n%K{cyan}%F{black} %# %k%F{cyan}$SEGMENT_SEPARATOR%f "
+  echo -n "\n%K{blue}%F{black} %# %k%F{blue}$SEGMENT_SEPARATOR%f "
   CURRENT_BG=''
 }
 
@@ -89,7 +89,7 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+    #prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
   fi
 }
 
