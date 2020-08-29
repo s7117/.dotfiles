@@ -102,7 +102,7 @@ function create_docker_env() {
   then
     echo "ERROR: Argumnet required."
   else
-    docker run --name $VAR --hostname "${VAR}_Docker" s7117/ubuntu_20_04_env
+    docker run --name $VAR --hostname "${VAR}_Docker" --restart-policy unless-stopped s7117/ubuntu_20_04_env
   fi
 }
 
