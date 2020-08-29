@@ -42,6 +42,8 @@ alias db="docker build"
 alias diprune="docker image prune"
 alias dcprune="docker container prune"
 alias dclean=clean_docker
+alias denv=create_docker_env
+alias dshell=docker_env_shell
 ### trash
 alias trash="rmtrash"
 ### python3
@@ -101,6 +103,16 @@ function create_docker_env() {
     echo "ERROR: Argumnet required."
   else
     docker run --name $VAR --hostname "${VAR}_Docker" s7117/ubuntu_20_04_env
+  fi
+}
+
+function docker_env_shell() {
+  VAR=$1
+  if [ -z $VAR ]
+  then
+    echo "ERROR: Container name required."
+  else
+    docker exec -u s7117 -w /home/s7117 $VAR /bin/zsh
   fi
 }
 
