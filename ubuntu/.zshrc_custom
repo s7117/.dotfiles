@@ -92,8 +92,18 @@ function zipup() {
   VAR=$1
   VAR=${VAR%/}
   zip -r "$VAR.zip" ./"$VAR" 
-}                                                                               
-                                                                                
+}
+
+function create_docker_env() {
+  VAR=$1
+  if [ -z $VAR ]
+  then
+    echo "ERROR: Argumnet required."
+  else
+    docker run --name $VAR --hostname "${VAR}_Docker" s7117/ubuntu_20_04_env
+  fi
+}
+
 function clean_docker() {                                                       
   docker container rm $(docker container ls -a -q)                              
   docker rmi $(docker images -a -q)                                             
