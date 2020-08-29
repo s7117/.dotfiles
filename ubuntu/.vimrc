@@ -6,8 +6,7 @@ set shiftwidth=2
 set expandtab
 set number
 set laststatus=2
-set mouse+=a
-set relativenumber
+set ruler
 set backspace=indent,eol,start
 set ignorecase
 set smartcase
