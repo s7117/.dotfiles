@@ -68,6 +68,10 @@ alias update_omz="~/OSConfigs/macos/update_omz.zsh"
 ################################################################################
 # Functions
 ################################################################################
+function git_setup () {
+  git config --global core.autocrlf input
+}
+
 function github_clone() {                                                       
   VAR=$1;                                                                       
   git clone git@github.com:$VAR                                                 
