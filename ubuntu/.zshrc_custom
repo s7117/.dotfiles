@@ -1,8 +1,8 @@
 ################################################################################
 # ZSH Customizations
 ################################################################################
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export DEFAULT_USER='$USER'
 unsetopt PROMPT_SP
 unset zle_bracketed_paste
