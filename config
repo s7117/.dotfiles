@@ -1,7 +1,7 @@
 # GitLab.com
 Host gitlab.com
   Preferredauthentications publickey
-    IdentityFile ~/.ssh/gitlab/id_ed25519
+  IdentityFile ~/.ssh/gitlab/id_ed25519
 
 # GitHub.com
 Host github.com
