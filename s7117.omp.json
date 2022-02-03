@@ -6,11 +6,11 @@
       "segments": [
         {
           "type": "os",
-          "background": "#222222",
+          "background": "#125488",
           "foreground": "#dddddd",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "template": "{{.Icon}} ",
+            "template": " {{.Icon}} ",
             "macos": "\uf179",
             "linux": "\ue37a",
             "windows": "\uf17a",
@@ -19,7 +19,7 @@
           "style": "diamond"
         },
         {
-          "background": "#5544ff",
+          "background": "#2a93d5",
           "foreground": "#0e202c",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -82,23 +82,35 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#1e7264",
-          "foreground": "#ffffff",
+          "background": "#7bd5f5",
+          "foreground": "#0e202c",
           "leading_diamond": "\ue0b6",
           "invert_powerline": true,
           "properties": {
-            "template": " {{ .HostName }} <transparent>\ue0b2</>"
+            "template": " \uf109 {{ .HostName }} "
           },
           "style": "diamond",
           "type": "session"
         },
         {
-          "background": "#0077c2",
-          "foreground": "#ffffff",
+          "background": "#787ff6",
+          "foreground": "#0e202c",
           "invert_powerline": true,
-          "leading_diamond": "\ue0b2",
+          "powerline_symbol": "\ue0b2",
           "properties": {
-            "template": " {{ .CurrentDate | date .Format }} "
+            "always_enabled": true,
+            "template": " {{ .FormattedMs }} "
+          },
+          "style": "powerline",
+          "type": "executiontime"
+        },
+        {
+          "background": "#1ca7ec",
+          "foreground": "#0e202c",
+          "invert_powerline": true,
+          "properties": {
+            "template": " {{ .CurrentDate | date .Format }} ",
+            "time_format": "3:04:05 PM"
           },
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
@@ -120,7 +132,7 @@
           "leading_diamond": "\ue0b6",
           "properties": {
             "always_enabled": true,
-            "template": "\ufc96 "
+            "template": " \ufc96 "
           },
           "style": "diamond",
           "trailing_diamond": "\ue0b0",
