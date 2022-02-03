@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "background": "#222222",
+          "foreground": "#dddddd",
+          "leading_diamond": "\ue0b6",
+          "properties": {
+            "template": "{{.Icon}} ",
+            "macos": "\uf179",
+            "linux": "\ue37a",
+            "windows": "\uf17a",
+            "display_distro_name": false
+          },
+          "style": "diamond"
+        },
+        {
+          "background": "#5544ff",
+          "foreground": "#0e202c",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "folder_separator_icon": " \ue0b1 ",
+            "home_icon": "~",
+            "style": "folder",
+            "template": " \uf74a {{ .Path }} "
+          },
+          "style": "powerline",
+          "type": "path"
+        },
+        {
+          "background": "green",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+          ],
+          "foreground": "#0e202c",
+          "leading_diamond": "\ue0b6",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
+          },
+          "style": "powerline",
+          "trailing_diamond": "\ue0b4",
+          "type": "git"
+        },
+        {
+          "background": "#FFDE57",
+          "foreground": "#0e202c",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "display_mode": "files",
+            "fetch_virtual_env": true,
+            "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Venv }}{{ end }} "
+          },
+          "style": "powerline",
+          "type": "python"
+        },
+        {
+          "background": "#ffff66",
+          "foreground": "#0e202c",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "template": " \uf0ad "
+          },
+          "style": "powerline",
+          "type": "root"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "background": "#516BEB",
+          "foreground": "#ffffff",
+          "leading_diamond": "\ue0b6",
+          "invert_powerline": true,
+          "properties": {
+            "template": " {{ .HostName }} <transparent>\ue0b2</>"
+          },
+          "style": "diamond",
+          "type": "session"
+        },
+        {
+          "background": "#0077c2",
+          "foreground": "#0e202c",
+          "invert_powerline": true,
+          "leading_diamond": "\ue0b2",
+          "properties": {
+            "template": " {{ .CurrentDate | date .Format }} "
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "#ffffff",
+          "background_templates": [
+            "{{ if gt .Code 0 }}#aa2222{{ end }}"
+          ],
+          "foreground": "#000000",
+          "leading_diamond": "\ue0b6",
+          "properties": {
+            "always_enabled": true,
+            "template": "\ufc96 "
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b0",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "console_title": true,
+  "console_title_style": "template",
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "final_space": true,
+  "version": 1
+}
