@@ -73,7 +73,7 @@ prompt_end() {
   else
     print -n "%{%k%}"
   fi
-  print -n "\n%K{cyan}%F{black} %# %k%F{cyan}$SEGMENT_SEPARATOR%f "
+  print -n "\n%K{cyan}%F{black} %# %k%F{cyan}$SEGMENT_SEPARATOR%f"
   CURRENT_BG=''
 }
 
@@ -85,7 +85,7 @@ prompt_context() {
   local user=`whoami`
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    #prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
+    prompt_segment black white " %(!.%{%F{yellow}%}.)$user=>%m "
   fi
 }
 
@@ -135,10 +135,10 @@ prompt_status() {
 
 # Display current virtual environment
 prompt_virtualenv() {
-  if [[ -n $VIRTUAL_ENV ]]; then
+  if [[ -n $CONDA_DEFAULT_ENV ]]; then
     color=cyan
-    prompt_segment $color $PRIMARY_FG
-    print -Pn " $(basename $VIRTUAL_ENV) "
+    prompt_segment yellow black
+    print -Pn " $(basename $CONDA_DEFAULT_ENV) "
   fi
 }
 
