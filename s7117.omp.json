@@ -82,7 +82,7 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#516BEB",
+          "background": "#1e7264",
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
           "invert_powerline": true,
@@ -94,7 +94,7 @@
         },
         {
           "background": "#0077c2",
-          "foreground": "#0e202c",
+          "foreground": "#ffffff",
           "invert_powerline": true,
           "leading_diamond": "\ue0b2",
           "properties": {
