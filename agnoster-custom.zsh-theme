@@ -137,7 +137,7 @@ prompt_status() {
 prompt_virtualenv() {
   if [[ -n $CONDA_DEFAULT_ENV ]]; then
     color=cyan
-    prompt_segment yellow black
+    prompt_segment blue white
     print -Pn " $(basename $CONDA_DEFAULT_ENV) "
   fi
 }
