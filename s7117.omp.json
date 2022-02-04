@@ -10,7 +10,7 @@
           "foreground": "#dddddd",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "template": "{{.Icon}} ",
+            "template": "{{.Icon}} \u2800",
             "macos": "\uf179",
             "linux": "\uf31b",
             "windows": "\uf17a",
@@ -26,7 +26,7 @@
             "folder_separator_icon": " \ue0b1 ",
             "home_icon": "~",
             "style": "folder",
-            "template": " \uf74a {{ .Path }} "
+            "template": "\u2800\uf74a \u2800{{ .Path }} \u2800"
           },
           "style": "powerline",
           "type": "path"
@@ -87,7 +87,7 @@
           "leading_diamond": "\ue0b6",
           "invert_powerline": true,
           "properties": {
-            "template": " \uf109 {{ .HostName }} "
+            "template": " \uf109 {{ .HostName }}\u2800"
           },
           "style": "diamond",
           "type": "session"
@@ -99,7 +99,7 @@
           "powerline_symbol": "\ue0b2",
           "properties": {
             "always_enabled": true,
-            "template": " {{ .FormattedMs }} "
+            "template": " {{ .FormattedMs }}\u2800"
           },
           "style": "powerline",
           "type": "executiontime"
@@ -109,7 +109,7 @@
           "foreground": "#0e202c",
           "invert_powerline": true,
           "properties": {
-            "template": " {{ .CurrentDate | date .Format }} ",
+            "template": " {{ .CurrentDate | date .Format }}\u2800",
             "time_format": "3:04:05 PM"
           },
           "style": "diamond",
@@ -132,7 +132,7 @@
           "leading_diamond": "\ue0b6",
           "properties": {
             "always_enabled": true,
-            "template": "\uf061 "
+            "template": "\uf061 \u2800"
           },
           "style": "diamond",
           "trailing_diamond": "\ue0b0",

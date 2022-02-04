@@ -9,7 +9,7 @@ unset zle_bracketed_paste
 ################################################################################
 # Terminal Colors
 export CLICOLOR=1
-#export LSCOLORS=GxFxBxDxCxegedabagacad
+export LSCOLORS=GxFxBxDxCxegedabagacad
 ################################################################################
 # PATH Modificiations
 ################################################################################
