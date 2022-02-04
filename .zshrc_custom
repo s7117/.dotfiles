@@ -1,8 +1,6 @@
 ################################################################################
 # ZSH Customizations
 ################################################################################
-#source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export DEFAULT_USER='$USER'
 unsetopt PROMPT_SP
 unset zle_bracketed_paste
@@ -10,7 +8,7 @@ unset zle_bracketed_paste
 # Prompt Customizations
 ################################################################################
 # Terminal Colors
-#export CLICOLORS=1
+export CLICOLOR=1
 #export LSCOLORS=GxFxBxDxCxegedabagacad
 ################################################################################
 # PATH Modificiations
