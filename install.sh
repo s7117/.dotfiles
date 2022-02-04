@@ -34,11 +34,9 @@ echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >
 
 # Install zsh-completions
 git clone https://github.com/zsh-users/zsh-completions.git ~/.cli_tools/zsh-completions
-export fpath="~/.cli_tools/zsh-completions/src $fpath"
 echo "source ~/.cli_tools/zsh-completions/zsh-completions.plugin.zsh" >> ~/.zshrc
 
 # Post Run Instructions
 echo "#### Post-run Instruction ####"
-echo "Run rm -f ~/.zcompdump* and then run compinit in the home directory."
-
-
+#echo "Run rm -f ~/.zcompdump* and then run compinit in the home directory."
+echo "DONE"
