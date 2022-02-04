@@ -22,6 +22,8 @@ export PATH=$PATH:/home/s7117/.local/bin
 ###############################################################################
 # Aliases
 ################################################################################
+# explorer.exe
+alias exp="explorer.exe"
 ### ls
 alias ls="ls --color"
 alias lsl="ls -1l"
