@@ -1,9 +1,12 @@
 mkdir ~/.cli_tools
+mkdir ~/.oh-my-posh
+mkdir ~/.oh-my-posh/bin
 
 # Oh-My-Posh Install
-sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-sudo chmod +x /usr/local/bin/oh-my-posh
+wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
+chmod +x ~/.oh-my-posh/bin/oh-my-posh
 
+echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
 echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/s7117.omp.json)"' >> ~/.zshrc
 echo 'source ~/.dotfiles/.zshrc_custom' >> ~/.zshrc
 
