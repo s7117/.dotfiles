@@ -10,9 +10,9 @@
           "foreground": "#dddddd",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "template": " {{.Icon}} ",
+            "template": "{{.Icon}} ",
             "macos": "\uf179",
-            "linux": "\ue37a",
+            "linux": "\uf31b",
             "windows": "\uf17a",
             "display_distro_name": false
           },
@@ -132,7 +132,7 @@
           "leading_diamond": "\ue0b6",
           "properties": {
             "always_enabled": true,
-            "template": " \ufc96 "
+            "template": "\uf061 "
           },
           "style": "diamond",
           "trailing_diamond": "\ue0b0",
