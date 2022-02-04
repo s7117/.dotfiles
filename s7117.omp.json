@@ -144,7 +144,7 @@
   ],
   "console_title": true,
   "console_title_style": "template",
-  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "console_title_template": "{{ .User }}@{{ .HostName }}:{{ .Folder }}",
   "final_space": true,
   "version": 1
 }
