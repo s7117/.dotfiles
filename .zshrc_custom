@@ -23,7 +23,7 @@ export PATH=$PATH:/home/s7117/.local/bin
 # Aliases
 ################################################################################
 ### ls
-#alias ls="ls -Gh"
+alias ls="ls --color"
 alias lsl="ls -1l"
 alias lsa="ls -A"
 alias lsld="ls -l -d */"
