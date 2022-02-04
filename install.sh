@@ -2,11 +2,17 @@ mkdir ~/.cli_tools
 mkdir ~/.oh-my-posh
 mkdir ~/.oh-my-posh/bin
 
+# Vars
+CURR_DIR=$(pwd)
+
+# Copy vim settings over
+cp ./.vimrc ~
+
 # Zsh Settings
-echo "HISTFILE=~/.zsh_history" >> .zshrc
-echo "HISTSIZE=10000" >> .zshrc
-echo "SAVEHIST=10000" >> .zshrc
-echo "setopt appendhistory" >> .zshrc
+echo "HISTFILE=~/.zsh_history" >> ~/.zshrc
+echo "HISTSIZE=10000" >> ~/.zshrc
+echo "SAVEHIST=10000" >> ~/.zshrc
+echo "setopt appendhistory" >> ~/.zshrc
 
 # Oh-My-Posh Install
 wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
@@ -28,6 +34,11 @@ echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >
 
 # Install zsh-completions
 git clone https://github.com/zsh-users/zsh-completions.git ~/.cli_tools/zsh-completions
-export fpath=(~/.cli_tools/zsh-completions/src $fpath)
+export fpath="~/.cli_tools/zsh-completions/src $fpath"
 echo "source ~/.cli_tools/zsh-completions/zsh-completions.plugin.zsh" >> ~/.zshrc
-rm -f ~/.zcompdump; compinit
+
+# Post Run Instructions
+echo "#### Post-run Instruction ####"
+echo "Run rm -f ~/.zcompdump* and then run compinit in the home directory."
+
+
