@@ -32,11 +32,6 @@ echo "source ~/.cli_tools/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/zsh-syntax-highlighting
 echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
-# Install zsh-completions
-git clone https://github.com/zsh-users/zsh-completions.git ~/.cli_tools/zsh-completions
-echo "source ~/.cli_tools/zsh-completions/zsh-completions.plugin.zsh" >> ~/.zshrc
-
 # Post Run Instructions
 echo "#### Post-run Instruction ####"
-#echo "Run rm -f ~/.zcompdump* and then run compinit in the home directory."
 echo "DONE"
