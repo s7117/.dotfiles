@@ -32,7 +32,7 @@ echo "setopt appendhistory" >> ~/.zshrc
 
 # Install Homebrew
 echo "LOG --> Installing Homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Add Hombrew to path
 if [[ "$CURR_OS" == *"Linux"* ]]; then
