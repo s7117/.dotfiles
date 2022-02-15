@@ -7,8 +7,8 @@ mkdir ~/.cli_tools
 mkdir ~/.ssh
 
 # SSH
-echo "LOG --> Copying ssh config..."
-cp ./config ~/.ssh
+# echo "LOG --> Copying ssh config..."
+# cp ./config ~/.ssh
 
 # Copy vim settings over
 echo "LOG --> Copying vimrc..."
@@ -32,7 +32,7 @@ echo "setopt appendhistory" >> ~/.zshrc
 
 # Install Homebrew
 echo "LOG --> Installing Homebrew..."
-/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Add Hombrew to path
 if [[ "$CURR_OS" == *"Linux"* ]]; then
