@@ -1,36 +1,48 @@
-mkdir ~/.cli_tools
-mkdir ~/.oh-my-posh
-mkdir ~/.oh-my-posh/bin
-
 # Vars
 CURR_DIR=$(pwd)
 
+echo "LOG --> Creating directories..."
+mkdir ~/.cli_tools
+
 # Copy vim settings over
+echo "LOG --> Copying vimrc..."
 cp ./.vimrc ~
 
+# Install zsh
+if [[ "$(uname)" == *"Linux"* ]]; then
+  echo "LOG --> Installing zsh and updating..."
+  sudo apt update -y
+  sudo apt upgrade -y
+  sudo apt install zsh -y
+fi
+chsh -s $(which zsh)
+
 # Zsh Settings
+echo "LOG --> Setting zsh history..."
 echo "HISTFILE=~/.zsh_history" >> ~/.zshrc
-echo "HISTSIZE=10000" >> ~/.zshrc
-echo "SAVEHIST=10000" >> ~/.zshrc
+echo "HISTSIZE=1000000000" >> ~/.zshrc
+echo "SAVEHIST=1000000000" >> ~/.zshrc
 echo "setopt appendhistory" >> ~/.zshrc
 
-# Oh-My-Posh Install
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
-chmod +x ~/.oh-my-posh/bin/oh-my-posh
+# Install Homebrew
+echo "LOG --> Installing Homebrew..."
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
+# Install Oh-My-Posh
+echo "LOG --> Installing Oh-My-Posh..."
+brew tap jandedobbeleer/oh-my-posh
+brew install oh-my-posh
+
+# Oh-my-posh
+echo "LOG --> Setting Oh-My-Posh Theme..."
 echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/s7117.omp.json)"' >> ~/.zshrc
 echo 'source ~/.dotfiles/.zshrc_custom' >> ~/.zshrc
 
-echo "# CLI Tools" >> ~/.zshrc
-
 # Install zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.cli_tools/zsh-autosuggestions
-echo "source ~/.cli_tools/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+brew install zsh-autosuggestions
 
 # Install zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/zsh-syntax-highlighting
-echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+brew install zsh-syntax-highlighting
 
 # Post Run Instructions
 echo "#### Post-run Instruction ####"
