@@ -77,7 +77,8 @@ echo 'source ~/.dotfiles/.zshrc_custom' >> ~/.zshrc
 #git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/zsh-syntax-highlighting
 #echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
-# Install Miniforge3 
+# Install Miniforge3
+echo "LOG --> Installing Miniforge3..."
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 zsh "./Miniforge3-$(uname)-$(uname -m).sh"
 rm ./Miniforge3*
