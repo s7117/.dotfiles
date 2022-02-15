@@ -28,6 +28,12 @@ echo "setopt appendhistory" >> ~/.zshrc
 echo "LOG --> Installing Homebrew..."
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Install iTerm2 on MacOS
+if [[ "$(uname)" == *"Darwin"* ]]; then
+  echo "LOG --> Installing iTerm2..."
+  brew install --cask iterm2
+fi
+
 # Install Oh-My-Posh
 echo "LOG --> Installing Oh-My-Posh..."
 brew tap jandedobbeleer/oh-my-posh
@@ -43,6 +49,11 @@ brew install zsh-autosuggestions
 
 # Install zsh-syntax-highlighting
 brew install zsh-syntax-highlighting
+
+# Install Miniforge3 
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+zsh "./Miniforge3-$(uname)-$(uname -m).sh"
+rm ./Miniforge3*
 
 # Post Run Instructions
 echo "#### Post-run Instruction ####"
