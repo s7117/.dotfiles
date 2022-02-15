@@ -21,6 +21,7 @@ if [[ "$CURR_OS" == *"Linux"* ]]; then
   sudo apt upgrade -y
   sudo apt install zsh -y
   sudo apt install build-essential -y
+  sudo apt install wget -y
 fi
 chsh -s $(which zsh)
 
@@ -33,7 +34,10 @@ echo "setopt appendhistory" >> ~/.zshrc
 
 # Install Homebrew
 echo "LOG --> Installing Homebrew..."
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+curl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh --output homebrew_install.sh
+chmod 700 homebrew_install.sh
+NONINTERACTIVE=1 /bin/bash -c "./homebrew_install.sh"
+rm ./homebrew_install.sh
 
 # Add Hombrew to path
 if [[ "$CURR_OS" == *"Linux"* ]]; then
