@@ -7,6 +7,8 @@ CURR_OS=$(uname)
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
 mkdir ~/.ssh
+mkdir ~/.oh-my-posh
+mkdir ~/.oh-my-posh/bin
 
 # SSH
 # echo "LOG --> Copying ssh config..."
@@ -58,8 +60,13 @@ fi
 
 # Install Oh-My-Posh
 echo "LOG --> Installing Oh-My-Posh..."
-brew tap jandedobbeleer/oh-my-posh
-brew install oh-my-posh
+if [[ "$CURR_OS" == *"Linux"* ]]; then
+  curl https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 --output ~/.oh-my-posh/bin/oh-my-posh
+  chmod +x ~/.oh-my-posh/bin/oh-my-posh
+elif [[ "$CURR_OS" == *"Darwin"* ]]; then
+  brew tap jandedobbeleer/oh-my-posh
+  brew install oh-my-posh
+fi
 
 # Oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
