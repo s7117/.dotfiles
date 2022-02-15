@@ -49,7 +49,7 @@ elif [[ "$CURR_OS" == *"Darwin"* ]]; then
 fi
 
 # Install base brew packages
-brew install gcc make git vim
+#brew install gcc make git vim
 
 # Install iTerm2 on MacOS
 if [[ "$CURR_OS" == *"Darwin"* ]]; then
