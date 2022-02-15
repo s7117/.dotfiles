@@ -63,6 +63,7 @@ echo "LOG --> Installing Oh-My-Posh..."
 if [[ "$CURR_OS" == *"Linux"* ]]; then
   curl https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 --output ~/.oh-my-posh/bin/oh-my-posh
   chmod +x ~/.oh-my-posh/bin/oh-my-posh
+  echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
 elif [[ "$CURR_OS" == *"Darwin"* ]]; then
   brew tap jandedobbeleer/oh-my-posh
   brew install oh-my-posh
