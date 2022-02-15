@@ -1,5 +1,6 @@
 # Vars
 CURR_DIR=$(pwd)
+CURR_OS=$(uname)
 
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
@@ -14,7 +15,7 @@ echo "LOG --> Copying vimrc..."
 cp ./.vimrc ~
 
 # Install zsh
-if [[ "$(uname)" == *"Linux"* ]]; then
+if [[ "$CURR_OS" == *"Linux"* ]]; then
   echo "LOG --> Installing zsh and updating..."
   sudo apt update -y
   sudo apt upgrade -y
@@ -33,8 +34,20 @@ echo "setopt appendhistory" >> ~/.zshrc
 echo "LOG --> Installing Homebrew..."
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Add Hombrew to path
+if [[ "$CURR_OS" == *"Linux"* ]]; then
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$CURR_OS" == *"Darwin"* ]]; then
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+  eval "$(/opt/hombrew/bin/brew shellenv)"
+fi
+
+# Install base brew packages
+brew install gcc make git vim
+
 # Install iTerm2 on MacOS
-if [[ "$(uname)" == *"Darwin"* ]]; then
+if [[ "$CURR_OS" == *"Darwin"* ]]; then
   echo "LOG --> Installing iTerm2..."
   brew install --cask iterm2
 fi
