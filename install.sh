@@ -67,11 +67,15 @@ echo "LOG --> Setting Oh-My-Posh Theme..."
 echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/s7117.omp.json)"' >> ~/.zshrc
 echo 'source ~/.dotfiles/.zshrc_custom' >> ~/.zshrc
 
+#echo "# CLI Tools" >> ~/.zshrc
+
 # Install zsh-autosuggestions
-brew install zsh-autosuggestions
+#git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.cli_tools/zsh-autosuggestions
+#echo "source ~/.cli_tools/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
 # Install zsh-syntax-highlighting
-brew install zsh-syntax-highlighting
+#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/zsh-syntax-highlighting
+#echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 # Install Miniforge3 
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
@@ -80,4 +84,5 @@ rm ./Miniforge3*
 
 # Post Run Instructions
 echo "#### Post-run Instruction ####"
+echo "Run post_install.sh now."
 echo "DONE"
