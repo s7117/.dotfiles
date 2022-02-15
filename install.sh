@@ -3,6 +3,11 @@ CURR_DIR=$(pwd)
 
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
+mkdir ~/.ssh
+
+# SSH
+echo "LOG --> Copying ssh config..."
+cp ./config ~/.ssh
 
 # Copy vim settings over
 echo "LOG --> Copying vimrc..."
