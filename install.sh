@@ -20,6 +20,7 @@ if [[ "$CURR_OS" == *"Linux"* ]]; then
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt install zsh -y
+  sudo apt install build-essential -y
 fi
 chsh -s $(which zsh)
 
