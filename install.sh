@@ -61,7 +61,7 @@ fi
 # Install Oh-My-Posh
 echo "LOG --> Installing Oh-My-Posh..."
 if [[ "$CURR_OS" == *"Linux"* ]]; then
-  curl https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 --output ~/.oh-my-posh/bin/oh-my-posh
+  curl -LJO https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.18.0/posh-linux-amd64 --output ~/.oh-my-posh/bin/oh-my-posh
   chmod +x ~/.oh-my-posh/bin/oh-my-posh
   echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
 elif [[ "$CURR_OS" == *"Darwin"* ]]; then
