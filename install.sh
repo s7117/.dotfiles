@@ -46,10 +46,10 @@ if [[ "$CURR_OS" == *"Darwin"* ]]; then
 fi
 
 # Add Hombrew to path
-if [[ "$CURR_OS" == *"Linux"* ]]; then
+#if [[ "$CURR_OS" == *"Linux"* ]]; then
   #echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
   #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ "$CURR_OS" == *"Darwin"* ]]; then
+if [[ "$CURR_OS" == *"Darwin"* ]]; then
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
   eval "$(/opt/hombrew/bin/brew shellenv)"
 fi
