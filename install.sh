@@ -37,16 +37,18 @@ echo "SAVEHIST=1000000000" >> ~/.zshrc
 echo "setopt appendhistory" >> ~/.zshrc
 
 # Install Homebrew
-echo "LOG --> Installing Homebrew..."
-curl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh --output homebrew_install.sh
-chmod 700 homebrew_install.sh
-NONINTERACTIVE=1 /bin/bash -c "./homebrew_install.sh"
-rm ./homebrew_install.sh
+if [[ "$CURR_OS" == *"Darwin"* ]]; then
+  echo "LOG --> Installing Homebrew..."
+  curl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh --output homebrew_install.sh
+  chmod 700 homebrew_install.sh
+  NONINTERACTIVE=1 /bin/bash -c "./homebrew_install.sh"
+  rm ./homebrew_install.sh
+fi
 
 # Add Hombrew to path
 if [[ "$CURR_OS" == *"Linux"* ]]; then
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  #echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.zshrc
+  #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ "$CURR_OS" == *"Darwin"* ]]; then
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
   eval "$(/opt/hombrew/bin/brew shellenv)"
