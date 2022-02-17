@@ -62,6 +62,7 @@ fi
 
 # Install Oh-My-Posh
 echo "LOG --> Installing Oh-My-Posh..."
+echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
 if [[ "$CURR_OS" == *"Linux"* ]]; then
   curl -o ~/.oh-my-posh/bin/oh-my-posh -LJO https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.18.0/posh-linux-amd64
   chmod +x ~/.oh-my-posh/bin/oh-my-posh
@@ -70,7 +71,6 @@ elif [[ "$CURR_OS" == *"Darwin"* ]]; then
   brew tap jandedobbeleer/oh-my-posh
   brew install oh-my-posh
 fi
-echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
 
 # Oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
