@@ -70,6 +70,7 @@ elif [[ "$CURR_OS" == *"Darwin"* ]]; then
   brew tap jandedobbeleer/oh-my-posh
   brew install oh-my-posh
 fi
+echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
 
 # Oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
