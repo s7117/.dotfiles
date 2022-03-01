@@ -39,6 +39,7 @@ alias cdd="cd .."
 ### copy
 alias cpdir="cp -avr"
 ### docker
+alias docker_setup=setup_docker_install
 alias drmi="docker rmi"
 alias dils="docker images -a"
 alias dcls="docker container ls -a"
@@ -130,4 +131,9 @@ function docker_env_shell() {
 function clean_docker() {                                                       
   docker container rm $(docker container ls -a -q)                              
   docker rmi $(docker images -a -q)                                             
+}
+
+function setup_docker_install() {
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
 }
