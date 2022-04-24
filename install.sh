@@ -31,10 +31,14 @@ chsh -s $(which zsh)
 
 # Zsh Settings
 echo "LOG --> Setting zsh history..."
-echo "HISTFILE=~/.zsh_history" >> ~/.zshrc
-echo "HISTSIZE=1000000000" >> ~/.zshrc
-echo "SAVEHIST=1000000000" >> ~/.zshrc
-echo "setopt appendhistory" >> ~/.zshrc
+echo "export HISTFILE=~/.zsh_history" >> ~/.zshrc
+echo "export HISTSIZE=1000000000" >> ~/.zshrc
+echo "export SAVEHIST=1000000000" >> ~/.zshrc
+echo 'export HISTTIMEFORMAT="[%F %T] "' >> ~/.zshrc
+echo "setopt INC_APPEND_HISTORY" >> ~/.zshrc
+echo "setopt EXTENDED_HISTORY" >> ~/.zshrc
+echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.zshrc
+
 
 # Install Homebrew
 if [[ "$CURR_OS" == *"Darwin"* ]]; then
