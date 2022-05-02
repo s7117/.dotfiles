@@ -7,8 +7,6 @@ CURR_OS=$(uname)
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
 mkdir ~/.ssh
-mkdir ~/.oh-my-posh
-mkdir ~/.oh-my-posh/bin
 
 # SSH
 # echo "LOG --> Copying ssh config..."
