@@ -70,13 +70,14 @@ echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >
 ########################################
 # Install Miniforge3
 if [[ ! -d "~/.miniforge3" ]]; then
+    MF3_PATH="$HOME/.miniforg3"
     echo "LOG --> Installing Miniforge3..."
-    mkdir ~/.miniforge3
+    mkdir $MF3_PATH
     wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
     chmod 700 "./Miniforge3-$(uname)-$(uname -m).sh"
-    zsh "./Miniforge3-$(uname)-$(uname -m).sh -b -p ~/.miniforge3 -f"
+    zsh "./Miniforge3-$(uname)-$(uname -m).sh -b -p $MF3_PATH -f"
     rm ./Miniforge3*
-    ~/.miniforge3/bin/conda init zsh
+    $HOME/bin/conda init zsh
 fi
 ########################################
 # Post Run Instructions
