@@ -9,6 +9,15 @@ if [[ "$CURR_OS" != *"Linux"* ]]; then
     exit
 fi
 ########################################
+# Save old zshrc if one exists
+if [[ -f "~/.zshrc" ]]; then
+    echo "LOG --> Found existing .zshrc file! Saving backup!"
+    mkdir .zsh_bups
+    cp ~/.zshrc ~/.zsh_bups/.bup.zshrc
+    # Overwrite the .zshrc
+    echo "" > .zshrc
+fi
+########################################
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
 mkdir ~/.ssh
@@ -64,6 +73,7 @@ if [[ ! -d "~/.miniforge3" ]]; then
     echo "LOG --> Installing Miniforge3..."
     mkdir ~/.miniforge3
     wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    chmod 700 "./Miniforge3-$(uname)-$(uname -m).sh"
     zsh "./Miniforge3-$(uname)-$(uname -m).sh -b -p ~/.miniforge3 -f"
     rm ./Miniforge3*
     ~/.miniforge3/bin/conda init zsh
