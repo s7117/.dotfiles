@@ -7,8 +7,6 @@ CURR_OS=$(uname)
 echo "LOG --> Creating directories..."
 mkdir ~/.cli_tools
 mkdir ~/.ssh
-mkdir ~/.oh-my-posh
-mkdir ~/.oh-my-posh/bin
 
 # SSH
 # echo "LOG --> Copying ssh config..."
@@ -68,8 +66,10 @@ fi
 # Install Oh-My-Posh
 echo "LOG --> Installing Oh-My-Posh..."
 echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
+mkdir ~/.oh-my-posh
+mkdir ~/.oh-my-posh/bin
 if [[ "$CURR_OS" == *"Linux"* ]]; then
-  curl -o ~/.oh-my-posh/bin/oh-my-posh -LJO https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.18.0/posh-linux-amd64
+  sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
   chmod +x ~/.oh-my-posh/bin/oh-my-posh
   echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
 elif [[ "$CURR_OS" == *"Darwin"* ]]; then
