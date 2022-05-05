@@ -62,6 +62,7 @@ echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >
 # Install Miniforge3
 if [[ ! -d "~/.miniforge3" ]]; then
     echo "LOG --> Installing Miniforge3..."
+    mkdir ~/.miniforge3
     wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
     zsh "./Miniforge3-$(uname)-$(uname -m).sh -b -p ~/.miniforge3 -f"
     rm ./Miniforge3*
