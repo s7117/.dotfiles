@@ -1,7 +1,15 @@
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000000
-SAVEHIST=1000000000
-setopt appendhistory
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+export HISTTIMEFORMAT="[%F %T] "
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+export XDG_CACHE_HOME=~/.oh-my-posh
 export PATH=$PATH:~/.oh-my-posh/bin
 eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/s7117.omp.json)"
 source ~/.dotfiles/.zshrc_custom
@@ -24,4 +32,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH=$PATH:/home/s7117/.local/bin:/usr/local/cuda-11.6/bin
