@@ -5,18 +5,18 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "os",
           "background": "#125488",
           "foreground": "#dddddd",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "display_distro_name": false,
-            "linux": "\uf31b",
+            "template": "{{.Icon}} \u2800",
             "macos": "\uf179",
-            "windows": "\uf17a"
+            "linux": "\uf31b",
+            "windows": "\uf17a",
+            "display_distro_name": false
           },
-          "style": "diamond",
-          "template": "{{.Icon}} \u2800",
-          "type": "os"
+          "style": "diamond"
         },
         {
           "background": "#2a93d5",
@@ -25,10 +25,10 @@
           "properties": {
             "folder_separator_icon": " \ue0b1 ",
             "home_icon": "~",
-            "style": "folder"
+            "style": "folder",
+            "template": "\u2800\uf74a \u2800{{ .Path }} \u2800"
           },
           "style": "powerline",
-          "template": "\u2800\uf74a \u2800{{ .Path }} \u2800",
           "type": "path"
         },
         {
@@ -37,10 +37,10 @@
           "powerline_symbol": "\ue0b0",
           "properties": {
             "display_mode": "always",
-            "fetch_virtual_env": true
+            "fetch_virtual_env": true,
+            "template": "\u2800\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Venv }}{{ end }}\u2800"
           },
           "style": "powerline",
-          "template": "\u2800\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Venv }}{{ end }}\u2800",
           "type": "python"
         },
         {
@@ -58,10 +58,10 @@
             "branch_max_length": 25,
             "fetch_stash_count": true,
             "fetch_status": true,
-            "fetch_upstream_icon": true
+            "fetch_upstream_icon": true,
+            "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
           },
           "style": "powerline",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "trailing_diamond": "\ue0b4",
           "type": "git"
         },
@@ -69,8 +69,10 @@
           "background": "#ffff66",
           "foreground": "#0e202c",
           "powerline_symbol": "\ue0b0",
+          "properties": {
+            "template": " \uf0ad "
+          },
           "style": "powerline",
-          "template": " \uf0ad ",
           "type": "root"
         }
       ],
@@ -82,10 +84,12 @@
         {
           "background": "#7bd5f5",
           "foreground": "#0e202c",
-          "invert_powerline": true,
           "leading_diamond": "\ue0b6",
+          "invert_powerline": true,
+          "properties": {
+            "template": " \uf109 {{ .HostName }}\u2800"
+          },
           "style": "diamond",
-          "template": " \uf109 {{ .HostName }}\u2800",
           "type": "session"
         },
         {
@@ -94,10 +98,10 @@
           "invert_powerline": true,
           "powerline_symbol": "\ue0b2",
           "properties": {
-            "always_enabled": true
+            "always_enabled": true,
+            "template": " {{ .FormattedMs }}\u2800"
           },
           "style": "powerline",
-          "template": " {{ .FormattedMs }}\u2800",
           "type": "executiontime"
         },
         {
@@ -105,10 +109,10 @@
           "foreground": "#0e202c",
           "invert_powerline": true,
           "properties": {
+            "template": " {{ .CurrentDate | date .Format }}\u2800",
             "time_format": "3:04:05 PM"
           },
           "style": "diamond",
-          "template": " {{ .CurrentDate | date .Format }}\u2800",
           "trailing_diamond": "\ue0b4",
           "type": "time"
         }
@@ -127,10 +131,10 @@
           "foreground": "#000000",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "always_enabled": true
+            "always_enabled": true,
+            "template": "\uf061 \u2800"
           },
           "style": "diamond",
-          "template": "\uf061 \u2800",
           "trailing_diamond": "\ue0b0",
           "type": "text"
         }
@@ -138,7 +142,9 @@
       "type": "prompt"
     }
   ],
+  "console_title": true,
+  "console_title_style": "template",
   "console_title_template": "{{ .UserName }}@{{ .HostName }}:{{ .Folder }}",
   "final_space": true,
-  "version": 2
+  "version": 1
 }

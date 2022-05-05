@@ -10,12 +10,12 @@ if [[ "$CURR_OS" != *"Linux"* ]]; then
 fi
 ########################################
 # Save old zshrc if one exists
-if [[ -f "~/.zshrc" ]]; then
+if [[ -f "$HOME/.zshrc" ]]; then
     echo "LOG --> Found existing .zshrc file! Saving backup!"
-    mkdir .zsh_bups
+    mkdir $HOME/.zsh_bups
     cp ~/.zshrc ~/.zsh_bups/.bup.zshrc
-    # Overwrite the .zshrc
-    echo "" > .zshrc
+    # Delete old .zshrc
+    rm "$HOME/.zshrc"
 fi
 ########################################
 echo "LOG --> Creating directories..."
@@ -47,6 +47,7 @@ echo "setopt EXTENDED_HISTORY" >> ~/.zshrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.zshrc
 echo "autoload -Uz compinit && compinit" >> ~/.zshrc
 echo "zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'" >> ~/.zshrc
+echo 'source ~/.dotfiles/etc/.zshrc_custom' >> ~/.zshrc
 ########################################
 # Install and Configure Oh-My-Posh.
 echo "LOG --> Installing Oh-My-Posh..."
@@ -58,7 +59,6 @@ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-
 chmod +x ~/.oh-my-posh/bin/oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
 echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
-echo 'source ~/.dotfiles/etc/.zshrc_custom' >> ~/.zshrc
 ########################################
 # Install CLI tools.
 ## Install zsh-autosuggestions
