@@ -80,5 +80,13 @@ if [[ ! -d "~/.miniforge3" ]]; then
     $MF3_PATH/bin/conda init zsh
 fi
 ########################################
+# Configure Xmodmap
+cp ./etc/.Xmodmap ~
+cp ./etc/.xkbmap ~
+if [[ ! -d "~/.config/autostart" ]]; then
+    mkdir "~/.config/autostart"
+fi
+cp ./etc/xkbcomp.desktop ~/.config/autostart
+########################################
 # Post Run Instructions
 echo "DONE"

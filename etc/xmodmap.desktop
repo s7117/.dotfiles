@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/home/psc/.xinitrc
-Hidden=false
-X-GNOME-Autostart-enablede=true
-Name=xmodmap
-Comment=xmodmap script
