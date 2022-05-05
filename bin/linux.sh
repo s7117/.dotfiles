@@ -83,10 +83,9 @@ fi
 # Configure Xmodmap
 cp ./etc/.Xmodmap ~
 cp ./etc/.xkbmap ~
-if [[ ! -d "~/.config/autostart" ]]; then
-    mkdir "~/.config/autostart"
-fi
-cp ./etc/xkbcomp.desktop ~/.config/autostart
+mkdir "~/.config"
+mkdir "~/.config/autostart"
+cp ./etc/xkbcomp.desktop ~/.config/autostart/
 ########################################
 # Post Run Instructions
 echo "DONE"
