@@ -60,7 +60,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/
 echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 ########################################
 # Install Miniforge3
-if [[ ! -d "~/.miniforge3"]]; then
+if [[ ! -d "~/.miniforge3" ]]; then
     echo "LOG --> Installing Miniforge3..."
     wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
     zsh "./Miniforge3-$(uname)-$(uname -m).sh -b -p ~/.miniforge3 -f"
