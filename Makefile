@@ -4,8 +4,7 @@ linux:
 
 # Install stuff for MacOS.
 mac:
-	echo 'Not Implemented!'
-	echo 'Future home: ./bin/mac.sh'
+	./bin/mac.sh
 
 # Clean up install.
 clean:
