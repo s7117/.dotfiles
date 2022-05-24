@@ -1,6 +1,6 @@
 # .dotfiles
 
-TODO: Will update this more in the future.
+FIXME: Bug check.
 
 This repository contains my personal development environment setup files and scripts. Please feel free to use it as you wish.
 
