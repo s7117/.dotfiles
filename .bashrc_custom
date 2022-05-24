@@ -1,0 +1,19 @@
+export PATH=$PATH:.
+alias ls="ls --color"
+alias cdd="cd .."
+
+function targzfunc() {
+  VAR=$1;
+  VAR=${VAR%/};
+  tar -zcvf "$VAR.tar.gz" ./"$VAR"
+}
+
+function untarfunc() {
+  VAR=$1
+  VAR=${VAR}
+  tar -xvf ./"$VAR"
+}
+
+alias targz=targzfunc
+alias untar=untarfunc
+
