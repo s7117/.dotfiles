@@ -24,6 +24,7 @@ export PATH=$PATH:/home/s7117/.local/bin
 ################################################################################
 # explorer.exe
 alias exp="explorer.exe"
+alias opend="nautilus . &> /dev/null &"
 ### ls
 alias ls="ls --color"
 alias lsl="ls -1l"
