@@ -81,11 +81,11 @@ if [[ ! -d "~/.miniforge3" ]]; then
 fi
 ########################################
 # Configure Xmodmap
-cp ./etc/.Xmodmap ~
-cp ./etc/.xkbmap ~
-mkdir "~/.config"
-mkdir "~/.config/autostart"
-cp ./etc/xkbcomp.desktop ~/.config/autostart/
+#cp ./etc/.Xmodmap ~
+#cp ./etc/.xkbmap ~
+#mkdir "~/.config"
+#mkdir "~/.config/autostart"
+#cp ./etc/xkbcomp.desktop ~/.config/autostart/
 ########################################
 # Post Run Instructions
 echo "DONE"
