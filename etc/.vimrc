@@ -1,3 +1,8 @@
+filetype on
+filetype plugin on
+filetype indent on
+autocmd FileType c,cpp,java,python set formatoptions+=ro
+autocmd FileType c set omnifunc=ccomplete#Complete
 set nocompatible
 syntax on
 set tabstop=2
@@ -15,4 +20,4 @@ color elflord
 set autoindent
 "set showtabline=2"
 "set winwidth=79"
-
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
