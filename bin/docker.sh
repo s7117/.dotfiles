@@ -10,7 +10,6 @@ if [[ "$CURR_OS" != *"Linux"* ]]; then
 fi
 ########################################
 echo "LOG --> Creating directories..."
-mkdir ~/.cli_tools
 mkdir ~/.ssh
 ########################################
 # Move config files around.
@@ -23,14 +22,6 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install build-essential -y
 sudo apt install wget -y
-########################################
-# Install CLI tools.
-## Install zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.cli_tools/zsh-autosuggestions
-echo "source ~/.cli_tools/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-## Install zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.cli_tools/zsh-syntax-highlighting
-echo "source ~/.cli_tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 ########################################
 # Install Miniforge3
 if [[ ! -d "~/.miniforge3" ]]; then
