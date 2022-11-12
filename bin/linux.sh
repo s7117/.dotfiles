@@ -47,7 +47,7 @@ echo "setopt EXTENDED_HISTORY" >> ~/.zshrc
 echo "setopt HIST_IGNORE_ALL_DUPS" >> ~/.zshrc
 echo "autoload -Uz compinit && compinit" >> ~/.zshrc
 echo "zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'" >> ~/.zshrc
-echo 'source ~/.dotfiles/etc/.zshrc_custom' >> ~/.zshrc
+echo 'source ~/.dotfiles/etc/zshrc_custom' >> ~/.zshrc
 ########################################
 # Install and Configure Oh-My-Posh.
 echo "LOG --> Installing Oh-My-Posh..."
