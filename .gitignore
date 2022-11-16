@@ -1,2 +1,5 @@
+# Ignore .DS_Store on MacOS
+*.DS_Store
+
 # Ignore Miniforge3 installer
 Miniforge3**
