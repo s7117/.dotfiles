@@ -87,7 +87,7 @@ checkcont
 
 # Unmount disk
 umount -f ${INSTALLDISK}?
-exit
+
 # Swap size
 SWAPSZ="32GiB"
 
@@ -130,6 +130,11 @@ mkfs.fat -F 32 "${INSTALLDISK}3"
 mount "${INSTALLDISK}3" /mnt
 mount --mkdir "${INSTALLDISK}1" /mnt/boot
 swapon "${INSTALLDISK}2"
+
+# Check the partitions
+echo "$LOG Showing newly created partitions..."
+fdisk -l $INSTALLDISK
+checkcont
 
 ################################################################################
 # Pre-install Arch Packages using pacstrap
