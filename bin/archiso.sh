@@ -78,7 +78,7 @@ while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
   echo "$LOG Enter Arch install destination disk..."
   read INSTALLDISK
   if [[ -b $INSTALLDISK ]]; then
-    echo "$LOG Install Drive: $INSTALLDISK..."
+    echo "$LOG New Arch install destination disk: $INSTALLDISK"
     break
   fi
   echo "$ERR Disk Device not found..."
