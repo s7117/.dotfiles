@@ -69,10 +69,11 @@ checkcont
 INSTALLDISK="$(lsblk -x SIZE -d -o PATH | tail -1)"
 INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
-echo "$LOG Continue with erasing $INSTALLDISK $YN"
+echo "$LOG Continue with erasing $INSTALLDISK $YN Enter N to specify disk."
 read CONT
 while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
   # List the available drives and their sizes
+  echo "$LOG Available disks:"
   lsblk -d -o PATH,SIZE -x SIZE
   echo "$LOG Enter Arch install destination disk..."
   read INSTALLDISK
