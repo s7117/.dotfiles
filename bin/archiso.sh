@@ -86,7 +86,7 @@ while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
 done
 
 # Unmount disk
-umount -f ${INSTALLDISK}?
+umount -f ${INSTALLDISK}*
 sleep 1
 # Swap size
 SWAPSZ="32GiB"
