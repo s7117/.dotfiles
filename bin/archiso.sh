@@ -40,7 +40,7 @@ else
   echo "$ERR Internet not connected..."
 fi
 # Update and install ufw and enable firewall
-pacman -Syu ufw --noconfirm
+#pacman -Syu ufw --noconfirm
 ufw enable
 ################################################################################
 # Update System Clock
@@ -134,15 +134,15 @@ swapon "${INSTALLDISK}2"
 # Pre-install Arch Packages using pacstrap
 ################################################################################
 # Install the base package, Linux kernel, and firmware.
-pacstrap -K /mnt base linux linux-firmware
+#pacstrap -K /mnt base linux linux-firmware
 # Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
+#pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
 # Install KDE
-pacstrap -K /mnt xorg sddm plasma
+#pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
-pacstrap -K /mnt man-db man-pages texinfo
+#pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
-pacstrap -K /mnt grub efibootmgr os-prober
+#pacstrap -K /mnt grub efibootmgr os-prober
 ################################################################################
 # Setup Fstab
 ################################################################################
