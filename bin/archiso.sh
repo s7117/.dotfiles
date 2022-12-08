@@ -79,15 +79,15 @@ while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
   read INSTALLDISK
   if [[ -b $INSTALLDISK ]]; then
     echo "$LOG New Arch install destination disk: $INSTALLDISK"
+    checkcont
     break
   fi
   echo "$ERR Disk Device not found..."
 done
-checkcont
 
 # Unmount disk
 umount -f ${INSTALLDISK}?
-
+sleep 1
 # Swap size
 SWAPSZ="32GiB"
 
