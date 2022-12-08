@@ -39,7 +39,7 @@ else
   echo "$ERR Internet not connected..."
 fi
 # Update and install ufw and enable firewall
-pacman -Syu ufw
+pacman -Syu ufw --noconfirm
 ufw enable
 ################################################################################
 # Update System Clock
