@@ -9,7 +9,8 @@ CONT="Y"
 function checkcont() {
   echo "$LOG Continue? $YN"
   read CONT
-  if [[ $CONT -eq "Y" ]]; then
+  UCONT=$(echo $CONT | awk '{print toupper($0)}')
+  if [[ $UCONT -eq "Y" ]]; then
     echo "$LOG Continuing..."
   else
     echo "$LOG Exiting..."
@@ -66,10 +67,22 @@ checkcont
 # Partition and Format Disks
 ################################################################################
 # Defaults
-INSTALLDISK="/dev/$(lsblk -x SIZE -d -o NAME | tail -1)"
+INSTALLDISK="$(lsblk -x SIZE -d -o PATH | tail -1)"
 INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
-checkcont
+read CONT
+while [[ `echo $CONT | awk '{print toupper($0)}'` -ne "Y"]]; do
+  # List the available drives and their sizes
+  lsblk -d -o PATH,SIZE -x SIZE
+  echo "$LOG Enter Arch install destination disk..."
+  read INSTALLDISK
+  if [[ -b $INSTALLDISK ]]; then
+    echo "$LOG Install Drive: $INSTALLDISK..."
+    break
+  fi
+  echo "$ERR Disk Device not found..."
+done
+#checkcont
 
 # Swap size
 SWAPSZ="32GiB"
@@ -126,7 +139,7 @@ pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
 pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
-packstrap -K /mnt grub efibootmgr os-prober
+pacstrap -K /mnt grub efibootmgr os-prober
 ################################################################################
 # Setup Fstab
 ################################################################################
