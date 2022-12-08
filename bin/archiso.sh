@@ -72,11 +72,48 @@ INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
 checkcont
 
+# Swap size
+SWAPSZ="32GiB"
+
 # Wipe Disk
 wipefs -a $INSTALLDISK
 
 # Create Partitions
-sfdisk $INSTALLDISK
+DRIVECONF="g
+n
+1
+
++1GiB
+n
+2
+
++$SWAPSZ
+n
+3
+
+
+t
+1
+1
+t
+2
+19
+t
+3
+23
+w
+"
+echo $DRIVECONF | fdisk -w always -W always $INSTALLDISK
+
+# Format the partitions
+mkfs.ext4 "${INSTALLDISK}1"
+mkswap "${INSTALLDISK}2"
+mkfs.fat -F 32 "${INSTALLDISK}3"
+
+# Mount the file systems
+mount "${INSTALLDISK}3" /mnt
+mount --mkdir "${INSTALLDISK}1" /mnt/boot
+swapon "${INSTALLDISK}2"
 
 ################################################################################
 # Pre-install Arch Packages using pacstrap
