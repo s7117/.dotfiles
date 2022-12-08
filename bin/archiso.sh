@@ -86,8 +86,8 @@ done
 checkcont
 
 # Unmount disk
-umount -f $INSTALLDISK?*
-
+umount -f ${INSTALLDISK}?
+exit
 # Swap size
 SWAPSZ="32GiB"
 
