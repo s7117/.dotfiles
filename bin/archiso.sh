@@ -82,7 +82,10 @@ while [[ `echo $CONT | awk '{print toupper($0)}'` -ne "Y"]]; do
   fi
   echo "$ERR Disk Device not found..."
 done
-#checkcont
+checkcont
+
+# Unmount disk
+umount -f "${INSTALLDISK}?*"
 
 # Swap size
 SWAPSZ="32GiB"
