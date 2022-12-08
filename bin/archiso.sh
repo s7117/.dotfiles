@@ -9,7 +9,7 @@ CONT="Y"
 function checkcont() {
   echo "$LOG Continue? $YN"
   read CONT
-  if [[ `echo $CONT | awk '{print toupper($0)}'` -eq "Y" ]]; then
+  if [ `echo $CONT | awk '{print toupper($0)}'` = "Y" ]; then
     echo "$LOG Continuing..."
   else
     echo "$LOG Exiting..."
@@ -70,7 +70,7 @@ INSTALLDISK="$(lsblk -x SIZE -d -o PATH | tail -1)"
 INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
 read CONT
-while [[ `echo $CONT | awk '{print toupper($0)}'` -ne "Y"]]; do
+while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
   # List the available drives and their sizes
   lsblk -d -o PATH,SIZE -x SIZE
   echo "$LOG Enter Arch install destination disk..."
