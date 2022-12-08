@@ -9,8 +9,7 @@ CONT="Y"
 function checkcont() {
   echo "$LOG Continue? $YN"
   read CONT
-  UCONT=$(echo $CONT | awk '{print toupper($0)}')
-  if [[ $UCONT -eq "Y" ]]; then
+  if [[ `echo $CONT | awk '{print toupper($0)}'` -eq "Y" ]]; then
     echo "$LOG Continuing..."
   else
     echo "$LOG Exiting..."
