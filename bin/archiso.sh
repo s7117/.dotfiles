@@ -46,7 +46,6 @@ ufw enable
 ################################################################################
 echo "$LOG Verify the clock is correct..."
 timedatectl status
-echo "$LOG Continue $YN"
 checkcont
 ################################################################################
 # Edit Mirrorlist
@@ -55,8 +54,8 @@ COUNTRY="country=US"
 if [[ -f "/etc/pacman.d/mirrorlist" ]]; then
   echo "$LOG Downloading and Modifying mirrorlist..."
   # Download Country's Mirrorlist
-  curl -o /etc/pacman.d/mirrorlist "https://archlinux.org/mirrorlist/?$COUNTRY"
-  sed -i "s/\#Server/Server/g" /etc/pacman.d/mirrorlist
+  curl "https://archlinux.org/mirrorlist/?$COUNTRY" | \
+  sed "s/\#Server/Server/g" > /etc/pacman.d/mirrorlist
 else
   echo "$ARR /etc/pacman.d/mirrorlist not found..."
   exit
