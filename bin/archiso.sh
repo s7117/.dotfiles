@@ -125,9 +125,9 @@ w
 echo $DRIVECONF | fdisk -w always -W always $INSTALLDISK
 
 # Format the partitions
-mkfs.ext4 "${INSTALLDISK}1"
+mkfs.ext4 "${INSTALLDISK}3"
 mkswap "${INSTALLDISK}2"
-mkfs.fat -F 32 "${INSTALLDISK}3"
+mkfs.fat -F 32 "${INSTALLDISK}1"
 
 # Mount the file systems
 mount "${INSTALLDISK}3" /mnt
