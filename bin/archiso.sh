@@ -39,8 +39,10 @@ else
   echo "$ERR Internet not connected..."
 fi
 # Update and install ufw and enable firewall
-#pacman -Syu ufw --noconfirm
+pacman -Syu ufw --noconfirm
 ufw enable
+ufw status
+checkcont
 ################################################################################
 # Update System Clock
 ################################################################################
@@ -145,17 +147,34 @@ checkcont
 # Install the base package, Linux kernel, and firmware.
 pacstrap -K /mnt base linux linux-firmware
 # Install Simple Pacakges
-#pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
+pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
 # Install KDE
-#pacstrap -K /mnt xorg sddm plasma
+pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
-#pacstrap -K /mnt man-db man-pages texinfo
+pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
-#pacstrap -K /mnt grub efibootmgr os-prober
+pacstrap -K /mnt grub efibootmgr os-prober
 ################################################################################
 # Setup Fstab
 ################################################################################
 genfstab -U /mnt >> /mnt/etc/fstab
 ################################################################################
 # CHROOT
+################################################################################
+echo "$LOG Running arch-chroot to new system..."
+arch-chroot /mnt
+################################################################################
+# Timezone
+################################################################################
+ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
+hwclock --systohc
+################################################################################
+# Locale setup
+################################################################################
+sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "temp" > /etc/hostname
+################################################################################
+# User Setup
 ################################################################################
