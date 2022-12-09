@@ -88,7 +88,7 @@ done
 # Unmount disk
 MOUNTPT=$(df | grep $INSTALLDISK | sort | tail -n 1 | awk '{print $6}')
 swapoff -a
-if [[ "$MOUNTPT" -ne "" ]]; then
+if [[ "$MOUNTPT" != "" ]]; then
   umount -R $MOUNTPT
 fi
 # Swap size
