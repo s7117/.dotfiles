@@ -140,7 +140,7 @@ checkcont
 # Pre-install Arch Packages using pacstrap
 ################################################################################
 # Install the base package, Linux kernel, and firmware.
-#pacstrap -K /mnt base linux linux-firmware
+pacstrap -K /mnt base linux linux-firmware
 # Install Simple Pacakges
 #pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
 # Install KDE
