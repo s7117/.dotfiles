@@ -2,6 +2,7 @@
 ################################################################################
 AR="-->"
 LOG="LOG $AR"
+WARN="WARNING $AR"
 ERR="ERROR $AR"
 YN="[Y/n]?"
 CONT="Y"
@@ -144,37 +145,62 @@ checkcont
 ################################################################################
 # Pre-install Arch Packages using pacstrap
 ################################################################################
+echo "$LOG Installing packages"
 # Install the base package, Linux kernel, and firmware.
 pacstrap -K /mnt base linux linux-firmware
 # Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo iwd
+pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
 # Install KDE
 pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
 pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
 pacstrap -K /mnt grub efibootmgr os-prober
+# Install WiFi CLI package if needed
+# TODO: Check for wlan0 and install iwd
+pacstrap -K /mnt iwd
+# Install CPU Microcode
+CPUVENDORID=$(lscpu | grep "^Vendor ID:" | awk '{print $3}')
+if [[ "$VENDORID" == "GenuineIntel" ]]; then
+  echo "$LOG Intel CPU Installed..."
+  pacstrap -K /mnt intel-ucode
+elif [[ "$VENDORID" == "AuthenticAMD" ]]; then
+  echo "$LOG AMD CPU Installed..."
+  pacstrap -K /mnt amd-ucode
+else
+  echo "$WARN Vendor ID not Intel or AMD..."
+fi
+# Install GPU Drivers
+if [[ "$(lspci | grep "VGA" | grep "NVIDIA")" != "" ]]; then
+  echo "Found NVIDIA GPU..."
+  pacstrap -K /mnt nvidia
+else
+  echo "Defaulting to mesa driver..."
+  pacstrap -K /mnt mesa
+fi
 ################################################################################
 # Setup Fstab
 ################################################################################
+echo "$LOG Generating fstab..."
 genfstab -U /mnt >> /mnt/etc/fstab
 ################################################################################
-# CHROOT
+# CHROOT Commands
 ################################################################################
-echo "$LOG Running arch-chroot to new system..."
-arch-chroot /mnt
-################################################################################
-# Timezone
-################################################################################
-ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
-hwclock --systohc
-################################################################################
-# Locale setup
-################################################################################
-sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-echo "temp" > /etc/hostname
-################################################################################
-# User Setup
-################################################################################
+# TODO: Disable Internet Here First
+USERNAME="user"
+# Enable UFW
+arch-chroot /mnt systemctl enable ufw && ufw enable
+# Change Root Password
+arch-chroot /mnt echo "temp2022xyz%123" | passwd --stdin root
+# Create User
+arch-chroot /mnt useradd -m -p "temp2022abc%123" $USERNAME
+# Give User Sudo Access
+arch-chroot /mnt usermod -aG wheel $USERNAME
+# Change SDDM Theme
+arch-chroot /mnt echo "[Theme] 
+Current=breeze" >> /usr/lib/sddm/sddm.conf.d/default.conf
+# Enable SDDM on Boot
+arch-chroot /mnt systemctl enable sddm
+# Enable dhcpcd on Boot
+arch-chroot /mnt systemctl enable dhcpcd
+
