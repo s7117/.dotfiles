@@ -1,5 +1,8 @@
 #!/bin/zsh
 ################################################################################
+# Using the steps found in the Arch Wiki:
+# https://wiki.archlinux.org/title/Installation_guide
+################################################################################
 AR="-->"
 LOG="LOG $AR"
 WARN="WARNING $AR"
@@ -17,9 +20,6 @@ function checkcont() {
     exit
   fi
 }
-################################################################################
-# Using the steps found in the Arch Wiki:
-# https://wiki.archlinux.org/title/Installation_guide
 ################################################################################
 # Verify Boot Mode
 ################################################################################
@@ -74,6 +74,7 @@ INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
 echo "$LOG Continue with erasing $INSTALLDISK $YN Enter N to specify disk."
 read CONT
+# Non-Default Setup
 while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
   # List the available drives and their sizes
   echo "$LOG Available disks:"
@@ -203,4 +204,10 @@ Current=breeze" >> /usr/lib/sddm/sddm.conf.d/default.conf
 arch-chroot /mnt systemctl enable sddm
 # Enable dhcpcd on Boot
 arch-chroot /mnt systemctl enable dhcpcd
-
+################################################################################
+# DONE
+################################################################################
+echo "$LOG End of script reached..."
+echo "$LOG Shutting down..."
+checkcont
+shutdown -h now
