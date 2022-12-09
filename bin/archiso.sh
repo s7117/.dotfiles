@@ -86,8 +86,11 @@ while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
 done
 
 # Unmount disk
-umount -f ${INSTALLDISK}*
-sleep 1
+MOUNTPT=$(df | grep $INSTALLDISK)
+swapoff -a
+if [[ "echo $MOUNTPT" -ne "" ]]; then
+  umount -R $(echo $MOUNTPT | sort | tail -n 1 | awk '{print $6}')
+fi
 # Swap size
 SWAPSZ="32GiB"
 
