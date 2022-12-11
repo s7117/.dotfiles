@@ -208,8 +208,8 @@ Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
 ################################################################################
 # Grub Setup
 ################################################################################
-arch-chroot /mnt mkdir /boot/grub
-arch-chroot /mnt touch /boot/grub/grub.cfg
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot \
+--bootloader-id=GRUB
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 ################################################################################
 # DONE
