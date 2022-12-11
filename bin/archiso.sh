@@ -189,21 +189,28 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ################################################################################
 # TODO: Disable Internet Here First
 USERNAME="user"
-# Enable UFW
-arch-chroot /mnt systemctl enable ufw && ufw enable
+# Set time zone
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
+arch-chroot /mnt hwclock --systohc
+# Localization
+arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
+/etc/locale.gen
+echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+# Change Hostname
+echo "newarchmachine" > /mnt/etc/hostname
 # Change Root Password
-arch-chroot /mnt echo "temp2022xyz%123" | passwd --stdin root
+arch-chroot /mnt usermod root -p "temp2022xyz%123"
 # Create User
 arch-chroot /mnt useradd -m -p "temp2022abc%123" $USERNAME
 # Give User Sudo Access
 arch-chroot /mnt usermod -aG wheel $USERNAME
 # Change SDDM Theme
-arch-chroot /mnt echo "[Theme] 
-Current=breeze" >> /usr/lib/sddm/sddm.conf.d/default.conf
-# Enable SDDM on Boot
-arch-chroot /mnt systemctl enable sddm
-# Enable dhcpcd on Boot
-arch-chroot /mnt systemctl enable dhcpcd
+echo "[Theme]
+Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
+################################################################################
+# Grub Setup
+################################################################################
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 ################################################################################
 # DONE
 ################################################################################
