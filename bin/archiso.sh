@@ -208,6 +208,7 @@ Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
 ################################################################################
 # Grub Setup
 ################################################################################
+arch-chroot /mnt mkdir /boot/grub
 arch-chroot /mnt touch /boot/grub/grub.cfg
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 ################################################################################
