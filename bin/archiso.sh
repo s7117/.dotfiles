@@ -188,7 +188,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # CHROOT Commands
 ################################################################################
 # TODO: Disable Internet Here First
-USERNAME="user"
 # Set time zone
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 arch-chroot /mnt hwclock --systohc
@@ -198,10 +197,6 @@ arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # Change Hostname
 echo "newarchmachine" > /mnt/etc/hostname
-# Create User
-arch-chroot /mnt useradd -m -p "temp2022abc%123" $USERNAME
-# Give User Sudo Access
-arch-chroot /mnt usermod -aG wheel $USERNAME
 # Change SDDM Theme
 echo "[Theme]
 Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
@@ -214,6 +209,8 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 ################################################################################
 # DONE
 ################################################################################
+echo "$LOG Change root password..."
+arch-chroot /mnt passwd
 echo "$LOG End of script reached..."
 echo "$LOG Shutting down..."
 checkcont
