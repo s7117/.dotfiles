@@ -198,8 +198,6 @@ arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # Change Hostname
 echo "newarchmachine" > /mnt/etc/hostname
-# Change Root Password
-arch-chroot /mnt usermod root -p "temp2022xyz%123"
 # Create User
 arch-chroot /mnt useradd -m -p "temp2022abc%123" $USERNAME
 # Give User Sudo Access
@@ -210,6 +208,7 @@ Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
 ################################################################################
 # Grub Setup
 ################################################################################
+arch-chroot /mnt touch /boot/grub/grub.cfg
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 ################################################################################
 # DONE
