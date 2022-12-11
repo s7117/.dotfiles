@@ -39,11 +39,6 @@ if [[ $(ping -c 1 google.com | grep "$CONNECTED" | wc -l) -eq 1 ]]; then
 else
   echo "$ERR Internet not connected..."
 fi
-# Update and install ufw and enable firewall
-pacman -Syu ufw --noconfirm
-ufw enable
-ufw status
-checkcont
 ################################################################################
 # Update System Clock
 ################################################################################
@@ -57,8 +52,7 @@ COUNTRY="country=US"
 if [[ -f "/etc/pacman.d/mirrorlist" ]]; then
   echo "$LOG Downloading and Modifying mirrorlist..."
   # Download Country's Mirrorlist
-  curl "https://archlinux.org/mirrorlist/?$COUNTRY" | \
-  sed "s/\#Server/Server/g" > /etc/pacman.d/mirrorlist
+  curl "https://archlinux.org/mirrorlist/?$COUNTRY" | sed "s/\#Server/Server/g" > /etc/pacman.d/mirrorlist
 else
   echo "$ARR /etc/pacman.d/mirrorlist not found..."
   exit
@@ -152,7 +146,7 @@ pacstrap -K /mnt base linux linux-firmware
 # Install Simple Pacakges
 pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
 # Install KDE
-pacstrap -K /mnt xorg sddm plasma
+pacstrap -K /mnt xorg sddm plasma-desktop
 # Install manual pages
 pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
@@ -198,8 +192,8 @@ echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # Change Hostname
 echo "newarchmachine" > /mnt/etc/hostname
 # Change SDDM Theme
-echo "[Theme]
-Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
+#echo "[Theme]
+#Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
 ################################################################################
 # Grub Setup
 ################################################################################
