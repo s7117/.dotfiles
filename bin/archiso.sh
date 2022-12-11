@@ -192,8 +192,8 @@ echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # Change Hostname
 echo "newarchmachine" > /mnt/etc/hostname
 # Change SDDM Theme
-#echo "[Theme]
-#Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
+echo "[Theme]
+Current=breeze-dark" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
 ################################################################################
 # Grub Setup
 ################################################################################
