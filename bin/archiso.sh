@@ -148,17 +148,6 @@ checkcont
 echo "$LOG Installing packages"
 # Install the base package, Linux kernel, and firmware.
 pacstrap -K /mnt base linux linux-firmware
-# Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
-# Install KDE
-pacstrap -K /mnt xorg sddm plasma-desktop
-# Install manual pages
-pacstrap -K /mnt man-db man-pages texinfo
-# Install Bootloader
-pacstrap -K /mnt grub efibootmgr os-prober
-# Install WiFi CLI package if needed
-# TODO: Check for wlan0 and install iwd
-pacstrap -K /mnt iwd
 # Install CPU Microcode
 CPUVENDORID=$(lscpu | grep "^Vendor ID:" | awk '{print $3}')
 if [[ "$VENDORID" == "GenuineIntel" ]]; then
@@ -178,6 +167,17 @@ else
   echo "Defaulting to mesa driver..."
   pacstrap -K /mnt mesa
 fi
+# Install Simple Pacakges
+pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
+# Install KDE
+pacstrap -K /mnt xorg sddm plasma-desktop
+# Install manual pages
+pacstrap -K /mnt man-db man-pages texinfo
+# Install Bootloader
+pacstrap -K /mnt grub efibootmgr os-prober
+# Install WiFi CLI package if needed
+# TODO: Check for wlan0 and install iwd
+pacstrap -K /mnt iwd
 ################################################################################
 # Setup Fstab
 ################################################################################
