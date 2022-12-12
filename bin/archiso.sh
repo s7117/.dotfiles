@@ -163,35 +163,35 @@ fi
 if [[ "$(lspci | grep "VGA" | grep "NVIDIA")" != "" ]]; then
   echo "Found NVIDIA GPU..."
   pacstrap -K /mnt nvidia
-  mkdir -p /mnt/etc/pacman.d/hooks
-  echo "[Trigger]
-  Operation=Install
-  Operation=Upgrade
-  Operation=Remove
-  Type=Package
-  Target=nvidia
-  Target=linux
-  # Change the linux part above and in the 
-  # Exec line if a different kernel is used
+  # mkdir -p /mnt/etc/pacman.d/hooks
+  # echo "[Trigger]
+  # Operation=Install
+  # Operation=Upgrade
+  # Operation=Remove
+  # Type=Package
+  # Target=nvidia
+  # Target=linux
+  # # Change the linux part above and in the 
+  # # Exec line if a different kernel is used
 
-  [Action]
-  Description=Update NVIDIA module in initcpio
-  Depends=mkinitcpio
-  When=PostTransaction
-  NeedsTargets
-  Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; \\
-  esac; done; /usr/bin/mkinitcpio -P'" \
-  > /mnt/etc/pacman.d/hooks/nvidia.hook
-  echo blacklist nouveau > /mnt/etc/modprobe.d/blacklist-nvidia-nouveau.conf
-  echo '
-  Section "Device"
-        Identifier "NVIDIA Card"
-        Driver "nvidia"
-        VendorName "NVIDIA Corporation"
-        BoardName "GeForce GTX 1050 Ti"
-  EndSection' >> /mnt/etc/X11/xorg.conf.d/20-nvidia.conf
-  echo "MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)" \
-    >> /mnt/etc/mkinitcpio.conf
+  # [Action]
+  # Description=Update NVIDIA module in initcpio
+  # Depends=mkinitcpio
+  # When=PostTransaction
+  # NeedsTargets
+  # Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; \\
+  # esac; done; /usr/bin/mkinitcpio -P'" \
+  # > /mnt/etc/pacman.d/hooks/nvidia.hook
+  # echo blacklist nouveau > /mnt/etc/modprobe.d/blacklist-nvidia-nouveau.conf
+  # echo '
+  # Section "Device"
+  #       Identifier "NVIDIA Card"
+  #       Driver "nvidia"
+  #       VendorName "NVIDIA Corporation"
+  #       BoardName "GeForce GTX 1050 Ti"
+  # EndSection' >> /mnt/etc/X11/xorg.conf.d/20-nvidia.conf
+  # echo "MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)" \
+  #   >> /mnt/etc/mkinitcpio.conf
 else
   echo "Defaulting to mesa driver..."
   pacstrap -K /mnt mesa
