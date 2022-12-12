@@ -170,7 +170,7 @@ fi
 # Install Simple Pacakges
 pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
 # Install KDE
-pacstrap -K /mnt xorg sddm plasma-desktop
+pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
 pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
