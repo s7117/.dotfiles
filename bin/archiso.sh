@@ -224,9 +224,9 @@ arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
 /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 # NVIDIA
-if [[ "$(lspci | grep "VGA" | grep "NVIDIA")" != "" ]]; then
-  arch-chroot /mnt mkinitcpio -P linux
-fi 
+# if [[ "$(lspci | grep "VGA" | grep "NVIDIA")" != "" ]]; then
+#   arch-chroot /mnt mkinitcpio -P linux
+# fi 
 # Change Hostname
 echo "newarchmachine" > /mnt/etc/hostname
 # Change SDDM Theme
