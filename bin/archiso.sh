@@ -122,15 +122,20 @@ w
 "
 echo $DRIVECONF | fdisk -w always -W always $INSTALLDISK
 
+NVMESUFFIX=""
+if [[ $INSTALLDISK == *"nvme"* ]]; then
+  NVMESUFFIX="p"
+fi
+
 # Format the partitions
-mkfs.ext4 "${INSTALLDISK}3"
-mkswap "${INSTALLDISK}2"
-mkfs.fat -F 32 "${INSTALLDISK}1"
+mkfs.ext4 "${INSTALLDISK}${NVMESUFFIX}3"
+mkswap "${INSTALLDISK}${NVMESUFFIX}2"
+mkfs.fat -F 32 "${INSTALLDISK}${NVMESUFFIX}1"
 
 # Mount the file systems
-mount "${INSTALLDISK}3" /mnt
-mount --mkdir "${INSTALLDISK}1" /mnt/boot
-swapon "${INSTALLDISK}2"
+mount "${INSTALLDISK}${NVMESUFFIX}3" /mnt
+mount --mkdir "${INSTALLDISK}${NVMESUFFIX}1" /mnt/boot
+swapon "${INSTALLDISK}${NVMESUFFIX}2"
 
 # Check the partitions
 echo "$LOG Showing newly created partitions..."
