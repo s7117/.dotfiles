@@ -170,7 +170,7 @@ fi
 # Install Simple Pacakges
 pacstrap -K /mnt vim htop dhcpcd zsh ufw \
   sudo git wget zsh openssh zip unzip \
-  base-devel
+  base-devel neofetch
 # Install KDE
 pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
