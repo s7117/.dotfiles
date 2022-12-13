@@ -190,7 +190,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "$LOG Run arch-chroot?"
 checkcont
 # Set time zone
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
+arch-chroot /mnt sh -c \
+  'ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime'
 arch-chroot /mnt hwclock --systohc
 # Localization
 arch-chroot /mnt sh -c \
@@ -200,7 +201,7 @@ arch-chroot /mnt sh -c 'echo "LANG=en_US.UTF-8" > /etc/locale.conf'
 arch-chroot /mnt sh -c 'echo "newarchmachine" > /etc/hostname'
 # Change SDDM Theme
 arch-chroot /mnt sh -c \
-  'echo "[Theme]\nCurrent=breeze" >> /usr/lib/sddm/sddm.conf.d/default.conf'
+  'sed -i  "s/Current=/Current=breeze/g" /usr/lib/sddm/sddm.conf.d/default.conf'
 # Link vi to vim
 arch-chroot /mnt ln -sf /usr/bin/vim /usr/bin/vi
 ################################################################################
