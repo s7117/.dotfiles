@@ -176,7 +176,6 @@ pacstrap -K /mnt man-db man-pages texinfo
 # Install Bootloader
 pacstrap -K /mnt grub efibootmgr os-prober
 # Install WiFi CLI package if needed
-# TODO: Check for wlan0 and install iwd
 pacstrap -K /mnt iwd
 # Install applications
 pacstrap -K /mnt dolphin gnome-terminal
@@ -188,19 +187,18 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ################################################################################
 # CHROOT Commands
 ################################################################################
-# TODO: Disable Internet Here First
 # Set time zone
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 arch-chroot /mnt hwclock --systohc
 # Localization
 arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
 /etc/locale.gen
-echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+arch-chroot /mnt sh -c 'echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf'
 # Change Hostname
-echo "newarchmachine" > /mnt/etc/hostname
+arch-chroot /mnt sh -c 'echo "newarchmachine" > /mnt/etc/hostname'
 # Change SDDM Theme
-echo "[Theme]
-Current=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf
+arch-chroot /mnt sh -c \
+'echo "[Theme]\nCurrent=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf'
 # Link vi to vim
 arch-chroot /mnt ln -sf /usr/bin/vim /usr/bin/vi
 ################################################################################
@@ -215,6 +213,21 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 echo "$LOG Change root password..."
 arch-chroot /mnt passwd
 echo "$LOG End of script reached..."
-echo "$LOG Shutting down..."
+echo "########################################"
+echo "$LOG Post Install Steps:"
+echo "- Shutdown and disconnect internet\!"
+echo "- Enable the following services on startup:"
+echo "\t a) systemctl enable iptables"
+echo "\t b) systemctl enable dhcpcd"
+echo "\t c) systemctl enable ufw"
+echo "\t d) systemctl enable sddm"
+echo "- Enable UFW using 'ufw enable'."
+echo "- Use 'visudo' to uncomment '%wheel ALL=(ALL:ALL) ALL'."
+echo "- Create a new user with sudo access:"
+echo "\t a) useradd -m username"
+echo "\t b) usermod -aG wheel username"
+echo "\t c) passwd username"
+echo "########################################"
+echo "$LOG Shut Down?"
 checkcont
 shutdown -h now
