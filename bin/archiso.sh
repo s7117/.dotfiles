@@ -168,7 +168,7 @@ else
   pacstrap -K /mnt mesa
 fi
 # Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git
+pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git wget zsh openssh zip unzip
 # Install KDE
 pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
@@ -178,6 +178,8 @@ pacstrap -K /mnt grub efibootmgr os-prober
 # Install WiFi CLI package if needed
 # TODO: Check for wlan0 and install iwd
 pacstrap -K /mnt iwd
+# Install applications
+pacstrap -K /mnt dolphin gnome-terminal
 ################################################################################
 # Setup Fstab
 ################################################################################
