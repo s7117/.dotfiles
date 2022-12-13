@@ -31,12 +31,12 @@ echo "LOG --> Installing AUR software..."
 AURDIR=~/.aurpkgs
 mkdir -p $AURDIR
 # Install AUR Packages
-git clone https://github.com/vinceliuice/grub2-themes $AURDIR
-git clone https://aur.archlinux.org/google-chrome.git $AURDIR
-git clone https://aur.archlinux.org/visual-studio-code-bin.git $AURDIR
+git clone https://github.com/vinceliuice/grub2-themes $AURDIR/grub2-themes
+git clone https://aur.archlinux.org/google-chrome.git $AURDIR/chrome
+git clone https://aur.archlinux.org/visual-studio-code-bin.git $AURDIR/vscode
 # Loop over AUR directories
-(cd "$AURDIR/google-chrome" && makepkg -si)
-(cd "$AURDIR/visual-studio-code-bin" && makepkg -si)
+(cd "$AURDIR/chrome" && makepkg -si)
+(cd "$AURDIR/vscode" && makepkg -si)
 ################################################################################
 # Configure Zsh
 echo "LOG --> Configuring Zsh..."
@@ -63,6 +63,18 @@ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-
 chmod +x ~/.oh-my-posh/bin/oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
 echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
+################################################################################
+# Fira Code Fonts
+curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
+| grep "FiraCode.zip" \
+| grep "browser_download_url" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -qi -
+mkdir -p ~/.local/share/fonts
+unzip FiraCode.zip -d ~/.local/share/fonts
+fc-cache
+rm FiraCode.zip
 ################################################################################
 # Install CLI tools.
 ## Install zsh-autosuggestions

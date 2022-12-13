@@ -168,7 +168,9 @@ else
   pacstrap -K /mnt mesa
 fi
 # Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw sudo git wget zsh openssh zip unzip
+pacstrap -K /mnt vim htop dhcpcd zsh ufw \
+  sudo git wget zsh openssh zip unzip \
+  base-devel
 # Install KDE
 pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
