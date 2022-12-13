@@ -187,18 +187,20 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ################################################################################
 # CHROOT Commands
 ################################################################################
+echo "$LOG Run arch-chroot?"
+checkcont
 # Set time zone
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 arch-chroot /mnt hwclock --systohc
 # Localization
-arch-chroot /mnt sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" \
-/etc/locale.gen
-arch-chroot /mnt sh -c 'echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf'
+arch-chroot /mnt sh -c \
+  'sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g" /etc/locale.gen'
+arch-chroot /mnt sh -c 'echo "LANG=en_US.UTF-8" > /etc/locale.conf'
 # Change Hostname
-arch-chroot /mnt sh -c 'echo "newarchmachine" > /mnt/etc/hostname'
+arch-chroot /mnt sh -c 'echo "newarchmachine" > /etc/hostname'
 # Change SDDM Theme
 arch-chroot /mnt sh -c \
-'echo "[Theme]\nCurrent=breeze" >> /mnt/usr/lib/sddm/sddm.conf.d/default.conf'
+  'echo "[Theme]\nCurrent=breeze" >> /usr/lib/sddm/sddm.conf.d/default.conf'
 # Link vi to vim
 arch-chroot /mnt ln -sf /usr/bin/vim /usr/bin/vi
 ################################################################################
