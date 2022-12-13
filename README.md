@@ -6,7 +6,7 @@ This repository contains my personal development environment setup files and scr
 
 ## Installing Tools:
 I setup my environment primarily using the Makefile and passing in the corresponding platform name. As of now the following Makefile targets are supported which runs their respective setup scripts:
-- [arch](https://github.com/s7117/.dotfiles/edit/main/README.md#arch-pre-os-install)
+- [arch](https://github.com/s7117/.dotfiles/blob/main/README.md#arch-pre-os-install)
 - ubuntu
 - docker
 - mac
