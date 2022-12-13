@@ -1,5 +1,12 @@
-# Install stuff for Linux (Ubuntu).
-linux:
+all:
+	echo "Inspect Makefile for targets..."
+
+# Install stuff for Arch
+arch:
+	./bin/arch.sh
+
+# Install stuff for Ubuntu.
+ubuntu:
 	./bin/linux.sh
 
 # Install stuff for Docker Container (Ubuntu).
