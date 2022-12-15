@@ -32,11 +32,10 @@ AURDIR=~/.aurpkgs
 mkdir -p $AURDIR
 # Install AUR Packages
 git clone https://github.com/vinceliuice/grub2-themes $AURDIR/grub2-themes
-git clone https://aur.archlinux.org/google-chrome.git $AURDIR/chrome
-git clone https://aur.archlinux.org/visual-studio-code-bin.git $AURDIR/vscode
-# Loop over AUR directories
-(cd "$AURDIR/chrome" && makepkg -si)
-(cd "$AURDIR/vscode" && makepkg -si)
+# Install paru AUR Helper from https://github.com/Morganamilo/paru
+git clone https://aur.archlinux.org/paru.git $AURDIR/paru
+(cd $AURDIR/paru && makepkg -si)
+paru -Syu google-chrome visual-studio-code-bin
 ################################################################################
 # Configure Zsh
 echo "LOG --> Configuring Zsh..."
