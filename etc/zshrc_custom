@@ -20,7 +20,7 @@ export PATH=$PATH:/home/s7117/.local/bin
 ################################################################################
 # explorer.exe
 alias exp="explorer.exe"
-alias opend="nautilus . &> /dev/null &"
+alias open=openfunc
 ### ls
 alias ls="ls --color"
 alias lsl="ls -1l"
@@ -97,6 +97,11 @@ function untarfunc() {
   VAR=$1                                                                        
   VAR=${VAR}                                                                    
   tar -xvf ./"$VAR"                                                             
+}
+
+function openfunc() {
+  VAR=$1
+  (xdg-open $VAR &> /dev/null &)
 }
 
 function zipup() {
