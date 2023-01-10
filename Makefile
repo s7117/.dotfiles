@@ -7,7 +7,7 @@ arch:
 
 # Install stuff for Ubuntu.
 ubuntu:
-	./bin/linux.sh
+	./bin/ubuntu.sh
 
 # Install stuff for Docker Container (Ubuntu).
 docker:
