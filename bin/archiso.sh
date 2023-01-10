@@ -180,7 +180,7 @@ pacstrap -K /mnt grub efibootmgr os-prober
 # Install WiFi CLI package if needed
 pacstrap -K /mnt iwd
 # Install applications
-pacstrap -K /mnt dolphin gnome-terminal
+pacstrap -K /mnt dolphin gnome-terminal spectacle
 ################################################################################
 # Setup Fstab
 ################################################################################

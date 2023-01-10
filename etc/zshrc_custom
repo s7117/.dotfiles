@@ -18,9 +18,11 @@ export PATH=$PATH:/home/s7117/.local/bin
 #################################################################################
 # Aliases
 ################################################################################
-# explorer.exe
+# GUI File Explorer
 alias exp="explorer.exe"
 alias open=openfunc
+### vi
+alias view="vi -R"
 ### ls
 alias ls="ls --color"
 alias lsl="ls -1l"
