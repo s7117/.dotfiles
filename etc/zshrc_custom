@@ -20,7 +20,9 @@ export PATH=$PATH:/home/s7117/.local/bin
 ################################################################################
 # GUI File Explorer
 alias exp="explorer.exe"
-alias open=openfunc
+if [[ $(uname) != *"Darwin"* ]]; then
+  alias open=openfunc
+fi
 ### vi
 alias view="vi -R"
 ### ls
