@@ -45,6 +45,10 @@ Some of the Arch Install Script:
 - Prompts for root password change.
 - Shows post install instructions.
 
+## (ARCH) Post-OS Install:
+
+### Setup Startup Services and User:
+
 During the first boot into Arch Linux do the following:
 1. `systemctl enable iptables`
 2. `systemctl enable dhcpcd`
@@ -56,6 +60,15 @@ During the first boot into Arch Linux do the following:
 8. `useradd -m username # create user`
 9. `passwd username # change user's password`
 10. `usermod -aG wheel username # add user to sudoer's list`
+Reboot after these steps...
+
+### Running the Post-Install Script:
+1. Login and open terminal.
+2. `git clone https://github.com/s7117/.dotfiles.git`
+3. `cd .dotfiles`
+4. `make arch # Enter sudo password as needed`
+5. Enter the grub2-theme resolution when prompted.
+6. Reboot.
 
 ## Current Features Included:
 The following features are currently implemented. Some features are not implemented in Docker to reduce any added performance overhead.
