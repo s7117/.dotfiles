@@ -70,6 +70,12 @@ Reboot after these steps...
 5. Enter the grub2-theme resolution when prompted.
 6. Reboot.
 
+## Fixing Windows Dual Boot Time Issues:
+Run the following command in the command prompt on Windows to set Windows to use UTC.
+`reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f`
+
+Refer to: https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows
+
 ## Current Features Included:
 The following features are currently implemented. Some features are not implemented in Docker to reduce any added performance overhead.
 - Sets up .zshrc with history and pointing to the ./etc/zshrc_custom file for aliases and functions.
