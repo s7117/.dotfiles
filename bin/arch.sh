@@ -102,7 +102,7 @@ echo "Please enter your monitor resolution: "
 echo "See available resolutions: https://github.com/vinceliuice/grub2-themes"
 echo "[1080p|2k|4k|ultrawide|ultrawide2k]..."
 read MRESOLUTION
-sudo $AURDIR/grub2-themes/install.sh -t vimix -s MRESOLUTION -i white -b
+sudo $AURDIR/grub2-themes/install.sh -t vimix -s $MRESOLUTION -i white -b
 ################################################################################
 # Post Run Instructions
 echo "DONE: Reboot system for changes to take affect..."
