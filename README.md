@@ -50,16 +50,15 @@ Some of the Arch Install Script:
 ### Setup Startup Services and User:
 
 During the first boot into Arch Linux do the following:
-1. `systemctl enable iptables`
-2. `systemctl enable dhcpcd`
-3. `systemctl enable ufw`
-4. `systemctl enable sddm`
-5. `systemctl enable iwd # for wi-fi`
-6. `ufw enable # start firewall`
-7. `visudo # Uncomment %wheel ALL=(ALL:ALL) ALL`
-8. `useradd -m username # create user`
-9. `passwd username # change user's password`
-10. `usermod -aG wheel username # add user to sudoer's list`
+1. `systemctl enable dhcpcd`
+2. `systemctl enable ufw`
+3. `systemctl enable sddm`
+4. `systemctl enable iwd # for wi-fi`
+5. `ufw enable # start firewall`
+6. `visudo # Uncomment %wheel ALL=(ALL:ALL) ALL`
+7. `useradd -m username # create user`
+8. `passwd username # change user's password`
+9. `usermod -aG wheel username # add user to sudoer's list`
 Reboot after these steps...
 
 ### Running the Post-Install Script:
