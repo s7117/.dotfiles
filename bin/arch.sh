@@ -96,13 +96,13 @@ if [[ ! -d "~/.miniforge3" ]]; then
 fi
 ################################################################################
 # Grub 2 Theme Setup
-sudo sed -i "s/GRUB_DISABLE_OS_PROBER=true/#GRUB_DISABLE_OS_PROBER=true/g" /etc/default/grub
-sudo echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-echo "Please enter your monitor resolution: "
-echo "See available resolutions: https://github.com/vinceliuice/grub2-themes"
-echo "[1080p|2k|4k|ultrawide|ultrawide2k]..."
-read MRESOLUTION
-sudo $AURDIR/grub2-themes/install.sh -t vimix -s $MRESOLUTION -i white -b
+# sudo sed -i "s/GRUB_DISABLE_OS_PROBER=true/#GRUB_DISABLE_OS_PROBER=true/g" /etc/default/grub
+# sudo echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+#echo "Please enter your monitor resolution: "
+#echo "See available resolutions: https://github.com/vinceliuice/grub2-themes"
+#echo "[1080p|2k|4k|ultrawide|ultrawide2k]..."
+#read MRESOLUTION
+#sudo $AURDIR/grub2-themes/install.sh -t vimix -s $MRESOLUTION -i white -b
 ################################################################################
 # Post Run Instructions
 echo "DONE: Reboot system for changes to take affect..."
