@@ -66,8 +66,10 @@ Reboot after these steps...
 2. `git clone https://github.com/s7117/.dotfiles.git`
 3. `cd .dotfiles`
 4. `make arch # Enter sudo password as needed`
-5. Enter the grub2-theme resolution when prompted.
-6. Reboot.
+5. `sudo vi /etc/default/grub`
+6. Uncomment the `GRUB_DISABLE_OS_PROBER=false` line.
+7. `sudo ~/.aurpkgs/grub2-themes/install.sh -t vimix -i color -s ultrawide2k`
+8. Reboot.
 
 ## Fixing Windows Dual Boot Time Issues:
 Run the following command in the command prompt on Windows to set Windows to use UTC.  
