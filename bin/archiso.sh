@@ -150,10 +150,10 @@ echo "$LOG Installing packages"
 pacstrap -K /mnt base linux linux-firmware
 # Install CPU Microcode
 CPUVENDORID=$(lscpu | grep "^Vendor ID:" | awk '{print $3}')
-if [[ "$VENDORID" == "GenuineIntel" ]]; then
+if [[ "$CPUVENDORID" == "GenuineIntel" ]]; then
   echo "$LOG Intel CPU Installed..."
   pacstrap -K /mnt intel-ucode
-elif [[ "$VENDORID" == "AuthenticAMD" ]]; then
+elif [[ "$CPUVENDORID" == "AuthenticAMD" ]]; then
   echo "$LOG AMD CPU Installed..."
   pacstrap -K /mnt amd-ucode
 else
