@@ -11,14 +11,21 @@ YN="[Y/n]?"
 CONT="Y"
 ################################################################################
 function checkcont() {
-  echo "$LOG Continue? $YN"
-  read CONT
-  if [ `echo $CONT | awk '{print toupper($0)}'` = "Y" ]; then
-    echo "$LOG Continuing..."
-  else
-    echo "$LOG Exiting..."
-    exit
-  fi
+  while true; do
+    echo "$LOG Proceed? $YN "
+    read yn
+    yn=$(echo $yn | awk '{print toupper($0)}')
+    case $yn in
+      "Y"|"") echo "$LOG Continuing..."
+        break
+        ;;
+      "N") echo "$LOG Exiting..."
+        exit
+        ;;
+      *) echo "$LOG Invalid response..."
+        ;;
+    esac
+  done
 }
 ################################################################################
 # Verify Boot Mode
@@ -66,11 +73,16 @@ checkcont
 INSTALLDISK="$(lsblk -x SIZE -d -o PATH | tail -1)"
 INSTALLDISKSIZE="$(lsblk -x SIZE -d -o SIZE | tail -1)"
 echo "$LOG Default Drive: $INSTALLDISK of size $INSTALLDISKSIZE"
-echo "$LOG Continue with erasing $INSTALLDISK $YN Enter N to specify disk."
+echo "##############################################"
+echo "$LOG Continue with erasing $INSTALLDISK (y/N)?"
+echo "##############################################"
 read CONT
+CONT=$(echo $CONT | awk '{print toupper($0)}')
 # Non-Default Setup
-while [ `echo $CONT | awk '{print toupper($0)}'` != "Y" ]; do
+while [[ $CONT != "Y" ]]; do
   # List the available drives and their sizes
+  echo "$LOG Listing disks with fdisk..."
+  fdisk -l | more
   echo "$LOG Available disks:"
   lsblk -d -o PATH,SIZE -x SIZE
   echo "$LOG Enter Arch install destination disk..."
