@@ -79,7 +79,7 @@ echo "##############################################"
 read CONT
 CONT=$(echo $CONT | awk '{print toupper($0)}')
 # Non-Default Setup
-while [ $CONT != "Y" ]; do
+while [[ $CONT != "Y" ]]; do
   # List the available drives and their sizes
   echo "$LOG Listing disks with fdisk..."
   fdisk -l | more
