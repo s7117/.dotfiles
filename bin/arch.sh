@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 ################################################################################
 CURR_DIR=$(pwd)
 CURR_OS=$(uname)
@@ -41,7 +41,7 @@ echo "##############################"
 echo "Connect your network cable..."
 echo "Press enter when ready..."
 echo "##############################"
-read TCONT
+read TEMPCONT
 ################################################################################
 # Install software
 echo "LOG --> Installing AUR software..."
@@ -52,7 +52,7 @@ git clone https://github.com/vinceliuice/grub2-themes $AURDIR/grub2-themes
 # Install paru AUR Helper from https://github.com/Morganamilo/paru
 git clone https://aur.archlinux.org/paru.git $AURDIR/paru
 (cd $AURDIR/paru && makepkg -si)
-paru -Syu google-chrome visual-studio-code-bin spotify
+paru -Syu google-chrome visual-studio-code-bin
 ################################################################################
 # Configure Zsh
 echo "LOG --> Configuring Zsh..."
@@ -113,7 +113,7 @@ if [[ ! -d "~/.miniforge3" ]]; then
 fi
 ################################################################################
 # Cisco AnyConnect/Remoting
-sudo pacman -S gtk2 freerdp libvncserver remmina
+#sudo pacman -S gtk2 freerdp libvncserver remmina
 ################################################################################
 # Grub 2 Theme Setup
 # sudo sed -i "s/GRUB_DISABLE_OS_PROBER=true/#GRUB_DISABLE_OS_PROBER=true/g" /etc/default/grub
@@ -125,7 +125,9 @@ sudo pacman -S gtk2 freerdp libvncserver remmina
 #sudo $AURDIR/grub2-themes/install.sh -t vimix -s $MRESOLUTION -i white -b
 ################################################################################
 # Post Run Instructions
+echo "############################################################"
 echo "TODO:"
+echo "############################################################"
 echo "- Uncomment GRUB_DISABLE_OS_PROBER=false"
 echo "  in /etc/default/grub"
 echo "- Setup grub2-themes in $AURDIR"
@@ -133,4 +135,6 @@ echo "- Remap ctrl to alt (vice versa)"
 echo "- Set terminal font to Fira Code"
 echo "- Change KRunner shortcut to ctrl+space"
 echo "- Change single click action to select"
+echo "############################################################"
 echo "DONE: Reboot system for changes to take affect..."
+echo "############################################################"
