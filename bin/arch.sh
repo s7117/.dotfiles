@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 ################################################################################
 CURR_DIR=$(pwd)
 CURR_OS=$(uname)
@@ -26,6 +26,23 @@ mkdir -p ~/.ssh
 cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
+# Services
+sudo systemctl enable dhcpcd 
+sudo systemctl enable ufw
+sudo systemctl enable sddm
+sudo systemctl start dhcpcd
+sudo systemctl start ufw
+sudo ufw enable
+sudo ufw default deny
+sleep 1
+################################################################################
+# Connect Your Netowrk Cable
+echo "##############################"
+echo "Connect your network cable..."
+echo "Press enter when ready..."
+echo "##############################"
+read TCONT
+################################################################################
 # Install software
 echo "LOG --> Installing AUR software..."
 AURDIR=~/.aurpkgs
@@ -35,7 +52,7 @@ git clone https://github.com/vinceliuice/grub2-themes $AURDIR/grub2-themes
 # Install paru AUR Helper from https://github.com/Morganamilo/paru
 git clone https://aur.archlinux.org/paru.git $AURDIR/paru
 (cd $AURDIR/paru && makepkg -si)
-paru -Syu google-chrome visual-studio-code-bin
+paru -Syu google-chrome visual-studio-code-bin spotify
 ################################################################################
 # Configure Zsh
 echo "LOG --> Configuring Zsh..."
@@ -95,6 +112,9 @@ if [[ ! -d "~/.miniforge3" ]]; then
     $MF3_PATH/bin/conda init zsh
 fi
 ################################################################################
+# Cisco AnyConnect/Remoting
+sudo pacman -S gtk2 freerdp libvncserver remmina
+################################################################################
 # Grub 2 Theme Setup
 # sudo sed -i "s/GRUB_DISABLE_OS_PROBER=true/#GRUB_DISABLE_OS_PROBER=true/g" /etc/default/grub
 # sudo echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
@@ -105,4 +125,12 @@ fi
 #sudo $AURDIR/grub2-themes/install.sh -t vimix -s $MRESOLUTION -i white -b
 ################################################################################
 # Post Run Instructions
+echo "TODO:"
+echo "- Uncomment GRUB_DISABLE_OS_PROBER=false"
+echo "  in /etc/default/grub"
+echo "- Setup grub2-themes in $AURDIR"
+echo "- Remap ctrl to alt (vice versa)"
+echo "- Set terminal font to Fira Code"
+echo "- Change KRunner shortcut to ctrl+space"
+echo "- Change single click action to select"
 echo "DONE: Reboot system for changes to take affect..."
