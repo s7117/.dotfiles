@@ -77,6 +77,13 @@ mv /temparchmnt/root/boot/* /temparchmnt/boot
 # change the default root parition to partition number 3
 sed -i 's/2/3/g' /temparchmnt/boot/boot.txt
 
+# Generate fstab
+blkid $INSTALLDISK
+genfstab -U /temparchmnt/bootn # Use this for /boot
+genfstab -U /temparchmnt/root # Use this for /
+# Copy the swap on the same device
+# Replace the drive names with their UUID from blkid
+
 # Reconfigure boot files with changes
 cd /temparchmnt/boot
 ./mkscr
