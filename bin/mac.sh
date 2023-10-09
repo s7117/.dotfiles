@@ -26,7 +26,7 @@ mkdir ~/.ssh
 ########################################
 # Move config files around.
 cp ./etc/config ~/.ssh
-cp ./etc/.vimrc ~/.vimrc
+cp ./etc/vimrc ~/.vimrc
 ########################################
 # Install Homebrew
 echo "LOG --> Installing Homebrew..."
