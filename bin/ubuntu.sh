@@ -24,7 +24,7 @@ mkdir ~/.ssh
 ########################################
 # Move config files around.
 cp ./etc/config ~/.ssh
-cp ./etc/.vimrc ~
+cp ./etc/vimrc ~/.vimrc
 ########################################
 # Install dependencies
 echo "LOG --> Installing dependencies and updating..."
