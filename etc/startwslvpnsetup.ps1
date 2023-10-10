@@ -1,1 +1,2 @@
-start-process powershell -verb runas -ArgumentList '-ExecutionPolicy Bypass -F "C:\Users\S7117\.dotfiles\etc\vpnsetupwsl.ps1"'
+start-process powershell -verb runas -ArgumentList '-ExecutionPolicy Bypass -F "\\wsl.localhost\Debian\home\s7117\.dotfiles\etc\vpnsetupwsl.ps1"'
+
