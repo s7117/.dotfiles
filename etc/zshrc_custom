@@ -145,8 +145,9 @@ function setup_docker_install() {
 }
 
 function wsl_vpn() {
-  powershell.exe "Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 4000"
-  powershell.exe "Get-NetIPInterface -InterfaceAlias "vEthernet (WSL)" | Set-NetIPInterface -InterfaceMetric 1"
+  echo "nameserver 10.0.0.1 10.0.0.5" > /etc/resolv.conf
+  powershell.exe -ExecutionPolicy Bypass -F \
+    "\\\\wsl.localhost\\Debian\\home\\$USER\\.dotfiles\\etc\\startwslvpnsetup.ps1"
 }
 
 ################################################################################
