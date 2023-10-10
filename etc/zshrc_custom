@@ -144,6 +144,11 @@ function setup_docker_install() {
   sudo usermod -aG docker $USER
 }
 
+function wsl_vpn() {
+  powershell.exe "Get-NetAdapter | Where-Object {$_.InterfaceDescription -Match "Cisco AnyConnect"} | Set-NetIPInterface -InterfaceMetric 4000"
+  powershell.exe "Get-NetIPInterface -InterfaceAlias "vEthernet (WSL)" | Set-NetIPInterface -InterfaceMetric 1"
+}
+
 ################################################################################
 # Setup Zsh Keybindings (for Arch)
 ################################################################################
