@@ -145,9 +145,13 @@ function setup_docker_install() {
 }
 
 function wsl_vpn() {
-  echo "nameserver 10.0.0.1 10.0.0.5" > /etc/resolv.conf
+  #echo "nameserver 10.0.0.1 10.0.0.5" > /etc/resolv.conf
   powershell.exe -ExecutionPolicy Bypass -F \
     "\\\\wsl.localhost\\Debian\\home\\$USER\\.dotfiles\\etc\\startwslvpnsetup.ps1"
+}
+
+function reset_wsl_vpn() {
+  echo "nameserver 1.1.1.1" > /etc/resolv.conf
 }
 
 ################################################################################
