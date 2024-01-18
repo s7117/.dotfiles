@@ -25,6 +25,7 @@ mkdir -p ~/.ssh
 # Move config files around.
 cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
+cp ./etc/kitty.conf ~/.config/kitty/kitty.conf
 ################################################################################
 # Services
 sudo systemctl enable NetworkManager 
