@@ -27,14 +27,24 @@ cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
 # Services
-sudo systemctl enable dhcpcd 
+sudo systemctl enable NetworkManager 
 sudo systemctl enable ufw
 sudo systemctl enable sddm
-sudo systemctl start dhcpcd
+sudo systemctl enable bluetooth
+sudo systemctl start NetworkManager
 sudo systemctl start ufw
+sudo systemctl start bluetooth
 sudo ufw enable
 sudo ufw default deny
 sleep 1
+################################################################################
+# Perform mirrolist ranking and update system
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" \
+    | sed -e 's/^#Server/Server/' -e '/^#/d' \
+    | rankmirrors -n 6 - \
+    | sudo tee /etc/pacman.d/mirrorlist
+sudo pacman -Syu
 ################################################################################
 # Connect Your Netowrk Cable
 echo "##############################"

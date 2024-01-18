@@ -180,9 +180,9 @@ else
   pacstrap -K /mnt mesa
 fi
 # Install Simple Pacakges
-pacstrap -K /mnt vim htop dhcpcd zsh ufw \
+pacstrap -K /mnt vim htop networkmanager zsh ufw \
   sudo git wget zsh openssh zip unzip \
-  base-devel neofetch
+  base-devel neofetch pacman-contrib
 # Install KDE
 pacstrap -K /mnt xorg sddm plasma
 # Install manual pages
@@ -192,7 +192,10 @@ pacstrap -K /mnt grub efibootmgr os-prober
 # Install WiFi CLI package if needed
 pacstrap -K /mnt iwd
 # Install applications
-pacstrap -K /mnt dolphin gnome-terminal spectacle ntfs-3g grub-customizer
+pacstrap -K /mnt dolphin gnome-terminal kitty spectacle ntfs-3g \
+  grub-customizer docker docker-buildx
+# Install qemu
+pacstrap -K /mnt qemu-full virt-manager virt-viewer dnsmasq
 ################################################################################
 # Setup Fstab
 ################################################################################
