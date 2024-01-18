@@ -38,20 +38,22 @@ sudo ufw enable
 sudo ufw default deny
 sleep 1
 ################################################################################
-# Perform mirrolist ranking and update system
-sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" \
-    | sed -e 's/^#Server/Server/' -e '/^#/d' \
-    | rankmirrors -n 6 - \
-    | sudo tee /etc/pacman.d/mirrorlist
-sudo pacman -Syu
-################################################################################
 # Connect Your Netowrk Cable
 echo "##############################"
 echo "Connect your network cable..."
 echo "Press enter when ready..."
 echo "##############################"
 read TEMPCONT
+################################################################################
+# Perform mirrolist ranking and update system
+echo "LOG --> Getting fastest mirrors..."
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=https&use_mirror_status=on" \
+    | sed -e 's/^#Server/Server/' -e '/^#/d' \
+    | rankmirrors -n 6 - \
+    | sudo tee /etc/pacman.d/mirrorlist
+echo "LOG --> Updating system..."
+sudo pacman -Syu
 ################################################################################
 # Install software
 echo "LOG --> Installing AUR software..."
