@@ -159,7 +159,7 @@ checkcont
 ################################################################################
 echo "$LOG Installing packages"
 # Install the base package, Linux kernel, and firmware.
-pacstrap -K /mnt base linux linux-firmware
+pacstrap -K /mnt base linux-lts linux-firmware
 # Install CPU Microcode
 CPUVENDORID=$(lscpu | grep "^Vendor ID:" | awk '{print $3}')
 if [[ "$CPUVENDORID" == "GenuineIntel" ]]; then
