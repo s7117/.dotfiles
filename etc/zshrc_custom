@@ -5,6 +5,9 @@ export DEFAULT_USER='$USER'
 unsetopt PROMPT_SP
 unset zle_bracketed_paste
 ################################################################################
+# Kitty configuration
+export KITTY_CONFIG_DIRECTORY=~/.dotfiles/etc/kitty
+################################################################################
 # Prompt Customizations
 ################################################################################
 # Terminal Colors
@@ -155,6 +158,10 @@ function wsl_vpn() {
 
 function reset_wsl_vpn() {
   echo "nameserver 1.1.1.1" > /etc/resolv.conf
+}
+
+function fix-kitty(){
+  infocmp -a xterm-kitty | ssh $1 tic -x -o \~/.terminfo /dev/stdin
 }
 
 ################################################################################
