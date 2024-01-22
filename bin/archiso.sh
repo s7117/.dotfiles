@@ -195,7 +195,8 @@ pacstrap -K /mnt iwd
 pacstrap -K /mnt dolphin gnome-terminal kitty spectacle ntfs-3g \
   grub-customizer docker docker-buildx
 # Install qemu
-pacstrap -K /mnt qemu-full virt-manager virt-viewer dnsmasq
+pacstrap -K /mnt qemu-full virt-manager virt-viewer dnsmasq vde2 bridge-utils \
+  swtpm
 ################################################################################
 # Setup Fstab
 ################################################################################

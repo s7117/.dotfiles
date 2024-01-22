@@ -39,6 +39,27 @@ sudo ufw enable
 sudo ufw default deny
 sleep 1
 ################################################################################
+# VM Related services
+sudo usermod -aG libvirt $USER
+sudo newgrp libvirt
+sudo systemctl enable virtqemud.service
+sudo systemctl enable virtqemud.socket
+sudo systemctl enable virtstoraged.service
+sudo systemctl enable virtstoraged.socket
+sudo systemctl enable dnsmasq.service
+sudo systemctl enable libvirtd.service
+sudo systemctl enable libvirtd.socket
+################################################################################
+# Docker Related Services
+sudo usermod -aG docker $USER
+sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
+################################################################################
+# Fingerprint Reader
+# Resource: https://wiki.archlinux.org/title/fprint
+# sudo usermod -aG input $USER
+# sudo pacman -Syu fprintd imagemagick
+################################################################################
 # Connect Your Netowrk Cable
 echo "##############################"
 echo "Connect your network cable..."
