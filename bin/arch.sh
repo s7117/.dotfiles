@@ -49,6 +49,11 @@ sudo systemctl enable virtstoraged.socket
 sudo systemctl enable dnsmasq.service
 sudo systemctl enable libvirtd.service
 sudo systemctl enable libvirtd.socket
+sudo systemctl enable virtnetworkd.service
+sudo cp /etc/default.xml /usr/share/libvirt/networks/default.xml
+sudo virsh net-define /usr/share/libvirt/networks/default.xml
+sudo virsh net-autostart default
+sudo virsh net-start default
 ################################################################################
 # Docker Related Services
 sudo usermod -aG docker $USER
