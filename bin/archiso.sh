@@ -181,6 +181,7 @@ else
 fi
 # Install Simple Pacakges
 pacstrap -K /mnt vim htop networkmanager zsh ufw \
+  networkmanager-openconnect \
   sudo git wget zsh openssh zip unzip \
   base-devel neofetch pacman-contrib
 # Install KDE
