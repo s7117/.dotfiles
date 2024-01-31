@@ -50,10 +50,20 @@ sudo systemctl enable dnsmasq.service
 sudo systemctl enable libvirtd.service
 sudo systemctl enable libvirtd.socket
 sudo systemctl enable virtnetworkd.service
-sudo cp etc/default.xml /usr/share/libvirt/networks/default.xml
-sudo virsh net-define /usr/share/libvirt/networks/default.xml
-sudo virsh net-autostart default
-sudo virsh net-start default
+
+sudo systemctl start virtqemud.service
+sudo systemctl start virtqemud.socket
+sudo systemctl start virtstoraged.service
+sudo systemctl start virtstoraged.socket
+sudo systemctl start dnsmasq.service
+sudo systemctl start libvirtd.service
+sudo systemctl start libvirtd.socket
+sudo systemctl start virtnetworkd.service
+
+#sudo cp etc/default.xml /usr/share/libvirt/networks/default.xml
+#sudo virsh net-define /usr/share/libvirt/networks/default.xml
+#sudo virsh net-autostart default
+#sudo virsh net-start default
 ################################################################################
 # Docker Related Services
 sudo usermod -aG docker $USER
