@@ -78,11 +78,20 @@ alias mp="multipass"
 ### VPN
 alias vpnon="sudo wg-quick up wg0"
 alias vpnoff="sudo wg-quick down wg0"
+# xrandr for screen outputs
+alias set_hd="xrandr --output eDP-1 --mode 1920x1080"
+alias reset_display="xrandr --output eDP-1 --mode 2256x1504"
 ################################################################################
 ################################################################################
 ################################################################################
 # Functions
 ################################################################################
+function mirror_display() {
+  xrandr --output eDP-1 --mode 1920x1080
+  EXTERNAL_DISPLAY_ID=$(xrandr | grep -v "disconnected" | grep "connected" | cut -d ' ' -f 1 | tail -n 1)
+  xrandr --output $EXTERNAL_DISPLAY_ID --same-as eDP-1
+}
+
 function git_setup () {
   git config --global core.autocrlf input
 }
