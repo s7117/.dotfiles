@@ -17,6 +17,9 @@ docker:
 mac:
 	./bin/mac.sh
 
+fedora:
+	./bin/fedora.sh
+
 # Clean up install.
 clean:
 	echo 'Not Implemented Yet!'
