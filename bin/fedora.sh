@@ -26,6 +26,23 @@ mkdir -p ~/.ssh
 cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
+# Connect Your Netowrk Cable
+sudo dnf -y remove firewalld
+echo "##############################"
+echo "Connect your network cable..."
+echo "Press enter when ready..."
+echo "##############################"
+read TEMPCONT
+################################################################################
+# Services
+sudo dnf -y install ufw
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw reset
+sudo ufw enable
+sudo ufw default deny
+sleep 1
+################################################################################
 # Install
 sudo dnf -y remove docker \
 	docker-client \
@@ -50,25 +67,11 @@ sudo dnf -y install docker-ce \
 	docker-buildx-plugin \
 	docker-compose-plugin
 ################################################################################
-# Services
-sudo systemctl enable ufw
-sudo systemctl start ufw
-sudo ufw enable
-sudo ufw default deny
-sleep 1
-################################################################################
 # Docker Related Services
 sudo usermod -aG docker $USER
 newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl enable docker.socket
-################################################################################
-# Connect Your Netowrk Cable
-echo "##############################"
-echo "Connect your network cable..."
-echo "Press enter when ready..."
-echo "##############################"
-read TEMPCONT
 ################################################################################
 # Configure Zsh
 echo "LOG --> Configuring Zsh..."
