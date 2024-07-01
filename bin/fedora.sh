@@ -42,16 +42,13 @@ sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
 	--add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
+echo "LOG --> Check that the following GPG matches:"
+echo "LOG --> 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35"
 sudo dnf install docker-ce \
 	docker-ce-cli \
 	containerd.io \
 	docker-buildx-plugin \
 	docker-compose-plugin
-
-echo "LOG --> Check that the following GPG matches:"
-echo "LOG --> 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35"
-
-
 ################################################################################
 # Services
 sudo systemctl enable ufw
