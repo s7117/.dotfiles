@@ -27,14 +27,14 @@ cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
 # Connect Your Netowrk Cable
-sudo dnf -y remove firewalld
 echo "##############################"
 echo "Connect your network cable..."
 echo "Press enter when ready..."
 echo "##############################"
 read TEMPCONT
 ################################################################################
-# Services
+# Install and configure ufw
+sudo dnf -y remove firewalld
 sudo dnf -y install ufw
 sudo systemctl enable ufw
 sudo systemctl start ufw
@@ -43,7 +43,10 @@ sudo ufw enable
 sudo ufw default deny
 sleep 1
 ################################################################################
-# Install
+# Install other tools
+sudo dnf -y install htop neofetch vim
+################################################################################
+# Install Docker
 sudo dnf -y remove docker \
 	docker-client \
 	docker-client-latest \
