@@ -38,7 +38,6 @@ sudo dnf -y remove firewalld
 sudo dnf -y install ufw
 sudo systemctl enable ufw
 sudo systemctl start ufw
-sudo ufw reset
 sudo ufw enable
 sudo ufw default deny
 sleep 1
