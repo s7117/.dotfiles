@@ -71,7 +71,6 @@ sudo dnf -y install docker-ce \
 ################################################################################
 # Docker Related Services
 sudo usermod -aG docker $USER
-newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl enable docker.socket
 ################################################################################
