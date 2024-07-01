@@ -43,7 +43,7 @@ sudo ufw default deny
 sleep 1
 ################################################################################
 # Install other tools
-sudo dnf -y install htop neofetch vim
+sudo dnf -y install htop neofetch vim zsh
 ################################################################################
 # Install Docker
 sudo dnf -y remove docker \
