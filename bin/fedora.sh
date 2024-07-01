@@ -27,7 +27,7 @@ cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
 # Install
-sudo dnf remove docker \
+sudo dnf -y remove docker \
 	docker-client \
 	docker-client-latest \
 	docker-common \
@@ -44,7 +44,7 @@ sudo dnf config-manager \
 
 echo "LOG --> Check that the following GPG matches:"
 echo "LOG --> 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35"
-sudo dnf install docker-ce \
+sudo dnf -y install docker-ce \
 	docker-ce-cli \
 	containerd.io \
 	docker-buildx-plugin \
