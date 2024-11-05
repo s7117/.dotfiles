@@ -35,7 +35,8 @@ chmod 700 homebrew_install.sh
 NONINTERACTIVE=1 /bin/bash -c "./homebrew_install.sh"
 rm ./homebrew_install.sh
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
-eval "$(/opt/hombrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew install wget
 ########################################
 # Install and configure iTerm2 and fonts
 echo "LOG --> Installing iTerm2 and fonts..."
@@ -58,11 +59,11 @@ echo 'source ~/.dotfiles/etc/zshrc_custom' >> ~/.zshrc
 ########################################
 # Install and Configure Oh-My-Posh.
 echo "LOG --> Installing Oh-My-Posh..."
-echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
+echo "export XDG_CACHE_HOME=~/.xdg-cache" >> ~/.zshrc
 mkdir ~/.oh-my-posh
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
-echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
+echo 'eval "$(oh-my-posh init zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
 ########################################
 # Install CLI tools.
 ## Install zsh-autosuggestions
