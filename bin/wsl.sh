@@ -27,12 +27,12 @@ cp ./etc/config ~/.ssh
 cp ./etc/vimrc ~/.vimrc
 ################################################################################
 # Enable and configure ufw
-sudo ufw enable
-sudo ufw default deny
-sudo systemctl enable ufw
-sudo systemctl start ufw
-echo "Connect network now..."
-read TEMPCONT
+#sudo ufw enable
+#sudo ufw default deny
+#sudo systemctl enable ufw
+#sudo systemctl start ufw
+#echo "Connect network now..."
+#read TEMPCONT
 ################################################################################
 # Install dependencies
 echo "LOG --> Installing dependencies and updating..."
@@ -64,7 +64,7 @@ mkdir ~/.oh-my-posh/bin
 wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
 chmod +x ~/.oh-my-posh/bin/oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
-echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
+echo 'eval "$(oh-my-posh init zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
 ################################################################################
 # Install CLI tools.
 ## Install zsh-autosuggestions
