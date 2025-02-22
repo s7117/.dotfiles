@@ -47,6 +47,7 @@ sudo pam-auth-update
 # Install docker
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 
+
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -57,14 +58,14 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 # Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Update apt repos
 sudo apt-get update -y
 
 # Install Docker
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add user to docker group
 sudo usermod -aG docker $USER
@@ -105,14 +106,14 @@ rm FiraCode.zip
 ################################################################################
 # Install and Configure Oh-My-Posh.
 echo "LOG --> Installing Oh-My-Posh..."
-echo "export XDG_CACHE_HOME=~/.oh-my-posh" >> ~/.zshrc
+echo "export XDG_CACHE_HOME=~/.xdg-cache" >> ~/.zshrc
 echo 'export PATH=$PATH:~/.oh-my-posh/bin' >> ~/.zshrc
 mkdir ~/.oh-my-posh
 mkdir ~/.oh-my-posh/bin
 wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/.oh-my-posh/bin/oh-my-posh
 chmod +x ~/.oh-my-posh/bin/oh-my-posh
 echo "LOG --> Setting Oh-My-Posh Theme..."
-echo 'eval "$(oh-my-posh --init --shell zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
+echo 'eval "$(oh-my-posh init zsh --config ~/.dotfiles/etc/s7117.omp.json)"' >> ~/.zshrc
 ################################################################################
 # Install CLI tools.
 ## Install zsh-autosuggestions
@@ -128,10 +129,10 @@ if [[ ! -d "~/.miniforge3" ]]; then
     echo "LOG --> Installing Miniforge3..."
     mkdir $MF3_PATH
     wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-    chmod 700 "./Miniforge3-$(uname)-$(uname -m).sh"
-    ./Miniforge3-$(uname)-$(uname -m).sh -b -p $MF3_PATH -f
+    bash ./Miniforge3-$(uname)-$(uname -m).sh -b -p $MF3_PATH -f
     rm ./Miniforge3*
     $MF3_PATH/bin/conda init zsh
+    $MF3_PATH/bin/mamba init zsh
 fi
 ################################################################################
 # Post Run Instructions
